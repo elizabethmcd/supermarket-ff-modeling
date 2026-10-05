@@ -1,0 +1,12 @@
+,protein_coding,lncRNA,processed_pseudogene,Other,snoRNA,snRNA,miRNA,tRNA,transcribed_unprocessed_pseudogene,artifact,rRNA,ribozyme,vault_RNA,transgene
+Straus_milk,13589,3509,908,224,43,31,31,18,14,9,2,2,0,0
+Straus_yogurt,13654,3369,941,206,39,26,28,18,16,9,2,2,1,0
+Cucumber,13668,3577,967,226,42,34,33,19,17,9,2,2,0,0
+Bubbie's_pickles,13676,3637,893,234,36,31,33,17,17,10,2,2,0,0
+Cabbage,13673,3585,952,215,40,28,30,16,17,9,2,2,0,0
+WWF_simply_sauerkraut,13844,3744,936,232,40,36,31,18,18,10,2,2,0,0
+Napa_cabbage,13732,3622,965,227,44,42,32,18,17,9,2,2,0,0
+CP_kimchi,13514,3316,881,205,31,28,31,16,15,9,2,2,0,0
+PDTC,13785,3610,952,220,40,34,30,18,16,9,2,2,0,0
+Positive_control,14083,3726,942,234,34,33,31,20,16,9,2,2,1,0
+Negative_control,13993,3819,1000,233,38,33,31,18,19,8,2,1,0,0

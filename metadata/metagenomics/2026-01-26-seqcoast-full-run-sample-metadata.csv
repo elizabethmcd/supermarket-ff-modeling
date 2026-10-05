@@ -1,0 +1,88 @@
+﻿fastq_1,fastq_2,sample_number,sample_description,sample_name,fermented_food
+7857_036_S186_R1.fastq.gz,7857_036_S186_R2.fastq.gz,36,Traditional Red Miso,FF0036_traditional_red_miso,miso
+7857_062_S187_R1.fastq.gz,7857_062_S187_R2.fastq.gz,62,Hornbacher cheese,FF0062_hornbacher_cheese,cheese
+7857_086_S188_R1.fastq.gz,7857_086_S188_R2.fastq.gz,86,Fermented seaweed salad,FF0086_fermented_seaweed_salad,sauerkraut
+7857_091_S189_R1.fastq.gz,7857_091_S189_R2.fastq.gz,91,MeeChun Salted black bean,FF0091_meechun_salted_black_bean,beans
+7857_092_S190_R1.fastq.gz,7857_092_S190_R2.fastq.gz,92,New York Natto Organic,FF0092_new_york_natto_organic,natto
+7857_122_S191_R1.fastq.gz,7857_122_S191_R2.fastq.gz,122,alexandre farms prebiotic kefir,FF0122_alexandre_farms_prebiotic_kefir,kefir
+7857_123_S192_R1.fastq.gz,7857_123_S192_R2.fastq.gz,123,kefirlab probiotic kefir,FF0123_kefirlab_probiotic_kefir,kefir
+7857_124_S193_R1.fastq.gz,7857_124_S193_R2.fastq.gz,124,white mountain bulgarian yogurt,FF0124_white_mountain_bulgarian_yogurt,yogurt
+7857_126_S194_R1.fastq.gz,7857_126_S194_R2.fastq.gz,126,nancy's probiotic whole milk yogurt,FF0126_nancy's_probiotic_whole_milk_yogurt,yogurt
+7857_127_S195_R1.fastq.gz,7857_127_S195_R2.fastq.gz,127,bellwether farms a2 organic whole milk yogurt,FF0127_bellwether_farms_a2_organic_whole_milk_yogurt,yogurt
+7857_128_S196_R1.fastq.gz,7857_128_S196_R2.fastq.gz,128,alexandre family famr a2/a2 organic plain yogurt,FF0128_alexandre_family_famr_a2/a2_organic_plain_yogurt,yogurt
+7857_129_S197_R1.fastq.gz,7857_129_S197_R2.fastq.gz,129,la fermiere creamy whole milk yogurt,FF0129_la_fermiere_creamy_whole_milk_yogurt,yogurt
+7857_130_S198_R1.fastq.gz,7857_130_S198_R2.fastq.gz,130,good culture cottage cheese,FF0130_good_culture_cottage_cheese,cheese
+7857_131_S199_R1.fastq.gz,7857_131_S199_R2.fastq.gz,131,vermont creamery creme fraiche,FF0131_vermont_creamery_creme_fraiche,cheese
+7857_132_S200_R1.fastq.gz,7857_132_S200_R2.fastq.gz,132,good culture cream cheese spread,FF0132_good_culture_cream_cheese_spread,cheese
+7857_133_S201_R1.fastq.gz,7857_133_S201_R2.fastq.gz,133,le chatelain camembert,FF0133_le_chatelain_camembert,cheese
+7857_134_S202_R1.fastq.gz,7857_134_S202_R2.fastq.gz,134,jasper hill farm willoughby,FF0134_jasper_hill_farm_willoughby,cheese
+7857_136_S203_R1.fastq.gz,7857_136_S203_R2.fastq.gz,136,rivoir-jacques vache comte,FF0136_rivoir-jacques_vache_comte,cheese
+7857_138_S204_R1.fastq.gz,7857_138_S204_R2.fastq.gz,138,beemster aged gouda,FF0138_beemster_aged_gouda,cheese
+7857_140_S205_R1.fastq.gz,7857_140_S205_R2.fastq.gz,140,Cultured Beets with fennel,FF0140_cultured_beets_with_fennel,sauerkraut
+7857_141_S206_R1.fastq.gz,7857_141_S206_R2.fastq.gz,141,local culture beet + fennel,FF0141_local_culture_beet_+_fennel,sauerkraut
+7857_142_S207_R1.fastq.gz,7857_142_S207_R2.fastq.gz,142,Sinto Gourmet kraut-chi crunchy beet,FF0142_sinto_gourmet_kraut-chi_crunchy_beet,beets
+7857_143_S208_R1.fastq.gz,7857_143_S208_R2.fastq.gz,143,wild west ferments moroccan beets,FF0143_wild_west_ferments_moroccan_beets,beets
+7857_144_S209_R1.fastq.gz,7857_144_S209_R2.fastq.gz,144,wildbrine red beet & cabbage,FF0144_wildbrine_red_beet_&_cabbage,sauerkraut
+7857_147_S210_R1.fastq.gz,7857_147_S210_R2.fastq.gz,147,"wild west ferments limited edition saerkraut, green garlic","FF0147_wild_west_ferments_limited_edition_saerkraut,_green_garlic",sauerkraut
+7857_148_S211_R1.fastq.gz,7857_148_S211_R2.fastq.gz,148,wild west erments el curtido,FF0148_wild_west_erments_el_curtido,sauerkraut
+7857_150_S212_R1.fastq.gz,7857_150_S212_R2.fastq.gz,150,sonoma brinery raw sauerkraut,FF0150_sonoma_brinery_raw_sauerkraut,sauerkraut
+7857_151_S213_R1.fastq.gz,7857_151_S213_R2.fastq.gz,151,farmhouse culture kraut,FF0151_farmhouse_culture_kraut,sauerkraut
+7857_159_S214_R1.fastq.gz,7857_159_S214_R2.fastq.gz,159,"mother in law's kimchi, vegan","FF0159_mother_in_law's_kimchi,_vegan",kimchi
+7857_161_S215_R1.fastq.gz,7857_161_S215_R2.fastq.gz,161,queens beachu kimchi,FF0161_queens_beachu_kimchi,kimchi
+7857_163_S216_R1.fastq.gz,7857_163_S216_R2.fastq.gz,163,cultured sweet white miso,FF0163_cultured_sweet_white_miso,miso
+7857_164_S217_R1.fastq.gz,7857_164_S217_R2.fastq.gz,164,aedan japanese fermented country miso,FF0164_aedan_japanese_fermented_country_miso,miso
+7857_165_S218_R1.fastq.gz,7857_165_S218_R2.fastq.gz,165,yabajurushi tsubu jikomi miso,FF0165_yabajurushi_tsubu_jikomi_miso,miso
+7857_172_S219_R1.fastq.gz,7857_172_S219_R2.fastq.gz,172,rejuvelac,FF0172_rejuvelac,beverage
+7857_173_S220_R1.fastq.gz,7857_173_S220_R2.fastq.gz,173,GT's kombucha,FF0173_gt's_kombucha,kombucha
+7857_174_S221_R1.fastq.gz,7857_174_S221_R2.fastq.gz,174,Wildbrine probiotic sriracha,FF0174_wildbrine_probiotic_sriracha,sriacha
+7857_175_S222_R1.fastq.gz,7857_175_S222_R2.fastq.gz,175,Huy fong sriracha chili sauce,FF0175_huy_fong_sriracha_chili_sauce,chili sauce
+7857_176_S223_R1.fastq.gz,7857_176_S223_R2.fastq.gz,176,Mani pitted castelvetrano olives,FF0176_mani_pitted_castelvetrano_olives,olives
+7857_177_S224_R1.fastq.gz,7857_177_S224_R2.fastq.gz,177,Berkeley Bowl kalamata olives pitted,FF0177_berkeley_bowl_kalamata_olives_pitted,olives
+7857_178_S225_R1.fastq.gz,7857_178_S225_R2.fastq.gz,178,Golden State Pickle Works cabbage w/ caraway,FF0178_golden_state_pickle_works_cabbage_w/_caraway,sauerkraut
+7857_179_S226_R1.fastq.gz,7857_179_S226_R2.fastq.gz,179,Dragonfly preserved bean curd in chili oil,FF0179_dragonfly_preserved_bean_curd_in_chili_oil,bean curd
+7857_180_S227_R1.fastq.gz,7857_180_S227_R2.fastq.gz,180,NY natto black,FF0180_ny_natto_black,natto
+7857_183_S228_R1.fastq.gz,7857_183_S228_R2.fastq.gz,183,Fra'mani salametto salame,FF0183_fra'mani_salametto_salame,salame
+7857_184_S229_R1.fastq.gz,7857_184_S229_R2.fastq.gz,184,Journeyman meat co saucisson sec salame,FF0184_journeyman_meat_co_saucisson_sec_salame,salame
+7857_191_S230_R1.fastq.gz,7857_191_S230_R2.fastq.gz,191,The Tao of Tea organic Topaz puer,FF0191_the_tao_of_tea_organic_topaz_puer,puer
+7857_192_S231_R1.fastq.gz,7857_192_S231_R2.fastq.gz,192,Braggs apple cider vinegar,FF0192_braggs_apple_cider_vinegar,vineger
+7857_198_S232_R1.fastq.gz,7857_198_S232_R2.fastq.gz,198,Cafe Colucci injera batter,FF0198_cafe_colucci_injera_batter,injera
+7857_200_S233_R1.fastq.gz,7857_200_S233_R2.fastq.gz,200,Wise Goat honey fermented garlic,FF0200_wise_goat_honey_fermented_garlic,garlic
+7857_202_S234_R1.fastq.gz,7857_202_S234_R2.fastq.gz,202,Cultured Pickle Chile paste,FF0202_cultured_pickle_chile_paste,chili paste
+7857_204_S235_R1.fastq.gz,7857_204_S235_R2.fastq.gz,204,Wild West Ferments spicy Italian pickle,FF0204_wild_west_ferments_spicy_italian_pickle,pickles
+7857_206_S236_R1.fastq.gz,7857_206_S236_R2.fastq.gz,206,Wild West Ferments Chili paste,FF0206_wild_west_ferments_chili_paste,chili paste
+7857_209_S237_R1.fastq.gz,7857_209_S237_R2.fastq.gz,209,Taro brand sour poi,FF0209_taro_brand_sour_poi,poi
+7857_210_S238_R1.fastq.gz,7857_210_S238_R2.fastq.gz,210,Cultured spicy okra,FF0210_cultured_spicy_okra,okra
+7857_211_S239_R1.fastq.gz,7857_211_S239_R2.fastq.gz,211,Kopabana cassava fufu,FF0211_kopabana_cassava_fufu,fufu
+7857_218_S240_R1.fastq.gz,7857_218_S240_R2.fastq.gz,218,Burlap & Barrel white peppercorns,FF0218_burlap_&_barrel_white_peppercorns,peppercorns
+7857_219_S241_R1.fastq.gz,7857_219_S241_R2.fastq.gz,219,Burlap & Barrel Iru,FF0219_burlap_&_barrel_iru,iru
+7857_220_S242_R1.fastq.gz,7857_220_S242_R2.fastq.gz,220,Elizabeth Sourdough,FF0220_elizabeth_sourdough,sourdough
+7857_221_S243_R1.fastq.gz,7857_221_S243_R2.fastq.gz,221,Shastha Foods Idli/Idli batter,FF0221_shastha_foods_idli/idli_batter,idli
+7857_222_S244_R1.fastq.gz,7857_222_S244_R2.fastq.gz,222,Grandios Yellow pap/ogi,FF0222_grandios_yellow_pap/ogi,pap
+7857_223_S245_R1.fastq.gz,7857_223_S245_R2.fastq.gz,223,Chantle Sourdough,FF0223_chantle_sourdough,sourdough
+7857_224_S246_R1.fastq.gz,7857_224_S246_R2.fastq.gz,224,CJ Doenjang,FF0224_cj_doenjang,doenjang
+7857_228_S247_R1.fastq.gz,7857_228_S247_R2.fastq.gz,228,Bayley Hazen Blue cheese,FF0228_bayley_hazen_blue_cheese,cheese
+7857_229_S248_R1.fastq.gz,7857_229_S248_R2.fastq.gz,229,Cabot Clothbound cheese,FF0229_cabot_clothbound_cheese,cheese
+7857_230_S249_R1.fastq.gz,7857_230_S249_R2.fastq.gz,230,Alpha Tolman cheese,FF0230_alpha_tolman_cheese,cheese
+7857_231_S250_R1.fastq.gz,7857_231_S250_R2.fastq.gz,231,Moses Sleeper cheese,FF0231_moses_sleeper_cheese,cheese
+7857_232_S251_R1.fastq.gz,7857_232_S251_R2.fastq.gz,232,Harbison Cheese,FF0232_harbison_cheese,cheese
+7857_233_S252_R1.fastq.gz,7857_233_S252_R2.fastq.gz,233,Winnimere cheese,FF0233_winnimere_cheese,cheese
+7857_234_S253_R1.fastq.gz,7857_234_S253_R2.fastq.gz,234,Gochujang,FF0234_gochujang,gochujang
+7857_235_S254_R1.fastq.gz,7857_235_S254_R2.fastq.gz,235,"Turmeric, Ginger, Jalepeno sauerkraut","FF0235_turmeric,_ginger,_jalepeno_sauerkraut",sauerkraut
+7857_236_S255_R1.fastq.gz,7857_236_S255_R2.fastq.gz,236,morel mushroom miso,FF0236_morel_mushroom_miso,miso
+7857_237_S256_R1.fastq.gz,7857_237_S256_R2.fastq.gz,237,cultured sea kraut,FF0237_cultured_sea_kraut,sauerkraut
+7857_238_S257_R1.fastq.gz,7857_238_S257_R2.fastq.gz,238,amazake,FF0238_amazake,amazake
+7857_239_S258_R1.fastq.gz,7857_239_S258_R2.fastq.gz,239,jalapeno kasuzuke (18mo),FF0239_jalapeno_kasuzuke_(18mo),kasuzuke
+7857_240_S259_R1.fastq.gz,7857_240_S259_R2.fastq.gz,240,kabocha kasuzuke (5yr),FF0240_kabocha_kasuzuke_(5yr),kasuzuke
+7857_241_S260_R1.fastq.gz,7857_241_S260_R2.fastq.gz,241,kombucha,FF0241_kombucha,kombucha
+7857_242_S261_R1.fastq.gz,7857_242_S261_R2.fastq.gz,242,carrot nukazuke,FF0242_carrot_nukazuke,nukazuke
+7857_243_S262_R1.fastq.gz,7857_243_S262_R2.fastq.gz,243,Filmjolk yogurt,FF0243_filmjolk_yogurt,yogurt
+7857_244_S263_R1.fastq.gz,7857_244_S263_R2.fastq.gz,244,Matsoni yogurt,FF0244_matsoni_yogurt,yogurt
+7857_245_S264_R1.fastq.gz,7857_245_S264_R2.fastq.gz,245,Piima yogurt,FF0245_piima_yogurt,yogurt
+7857_246_S265_R1.fastq.gz,7857_246_S265_R2.fastq.gz,246,Viili yogurt,FF0246_viili_yogurt,yogurt
+7857_249_S266_R1.fastq.gz,7857_249_S266_R2.fastq.gz,249,dosa batter,FF0249_dosa_batter,dosa
+7857_251_S267_R1.fastq.gz,7857_251_S267_R2.fastq.gz,251,millet dosa batter,FF0251_millet_dosa_batter,dosa
+7857_252_S268_R1.fastq.gz,7857_252_S268_R2.fastq.gz,252,kefir grains,FF0252_kefir_grains,kefir
+7857_253_S269_R1.fastq.gz,7857_253_S269_R2.fastq.gz,253,water kefir grains,FF0253_water_kefir_grains,kefir
+7857_256_S270_R1.fastq.gz,7857_256_S270_R2.fastq.gz,256,fermented black beans (douchi),FF0256_fermented_black_beans_(douchi),douchi
+7857_258_S271_R1.fastq.gz,7857_258_S271_R2.fastq.gz,258,sorghum dosa batter,FF0258_sorghum_dosa_batter,dosa
+7857_260_S272_R1.fastq.gz,7857_260_S272_R2.fastq.gz,260,ragi dosa batter,FF0260_ragi_dosa_batter,dosa

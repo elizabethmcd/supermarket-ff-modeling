@@ -1,0 +1,235 @@
+Sample 	Run #	ID	LPS added	Pre-treatment	Sample Type	Main ingredient	Food type	replicate
+0.0125% acetic acid	44R9PF	44R9PF_1	yes	0.0125% acetic acid	0.0125% acetic acid	NA	NA	replicate_1
+0.0125% acetic acid	44R9PF	44R9PF_9	yes	0.0125% acetic acid	0.0125% acetic acid	NA	NA	replicate_2
+0.025% lactic acid	44R9PF	44R9PF_2	yes	0.025% lactic acid	0.025% lactic acid	NA	NA	replicate_1
+0.025% lactic acid	44R9PF	44R9PF_10	yes	0.025% lactic acid	0.025% lactic acid	NA	NA	replicate_2
+500uM 4HPLA	44R9PF	44R9PF_5	yes	4-Hydroxyphenyllactic acid	4-Hydroxyphenyllactic acid	NA	NA	replicate_1
+500uM 4HPLA	44R9PF	44R9PF_13	yes	4-Hydroxyphenyllactic acid	4-Hydroxyphenyllactic acid	NA	NA	replicate_2
+FF0128	4M38F8	4M38F8_15	yes	alexandre family famr a2/a2 organic plain yogurt	Alexandre family farm a2/a2 organic plain yogurt	milk	yogurt	replicate_1
+FF0128	4M38F8	4M38F8_38	yes	alexandre family famr a2/a2 organic plain yogurt	Alexandre family farm a2/a2 organic plain yogurt	milk	yogurt	replicate_2
+FF0230	NQGVPS	NQGVPS_12	yes	Alpha Tolman cheese	Alpha Tolman cheese	milk	cheese	replicate_1
+FF0230	NQGVPS	NQGVPS_35	yes	Alpha Tolman cheese	Alpha Tolman cheese	milk	cheese	replicate_2
+FF0190	53JTN4	53JTN4_3	yes	Alter Eco total blackout 100% cacao chocolate	Alter Eco total blackout 100% cacao chocolate	cacao	chocolate	replicate_1
+FF0190	53JTN4	53JTN4_26	yes	Alter Eco total blackout 100% cacao chocolate	Alter Eco total blackout 100% cacao chocolate	cacao	chocolate	replicate_2
+FF0238	NQGVPS	NQGVPS_20	yes	amazake	amazake	rice	amazake	replicate_1
+FF0238	NQGVPS	NQGVPS_43	yes	amazake	amazake	rice	amazake	replicate_2
+FF0216	53JTN4	53JTN4_20	yes	Barrio fiesta bagoong hipon	Barrio fiesta bagoong hipon	shrimp	fermented shrimp paste	replicate_1
+FF0216	53JTN4	53JTN4_43	yes	Barrio fiesta bagoong hipon	Barrio fiesta bagoong hipon	shrimp	fermented shrimp paste	replicate_2
+FF0228	NQGVPS	NQGVPS_10	yes	Bayley Hazen Blue cheese	Bayley Hazen Blue cheese	milk	cheese	replicate_1
+FF0228	NQGVPS	NQGVPS_33	yes	Bayley Hazen Blue cheese	Bayley Hazen Blue cheese	milk	cheese	replicate_2
+FF0241	4M38F8	4M38F8_2	yes	beet kombucha	beet kombucha	sugar	kombucha	replicate_1
+FF0241	4M38F8	4M38F8_25	yes	beet kombucha	beet kombucha	sugar	kombucha	replicate_2
+FF0177	Z6YWP9	Z6YWP9_14	yes	Berkeley Bowl kalamata olives pitted	Berkeley Bowl kalamata olives pitted	olive	olives	replicate_1
+FF0177	Z6YWP9	Z6YWP9_37	yes	Berkeley Bowl kalamata olives pitted	Berkeley Bowl kalamata olives pitted	olive	olives	replicate_2
+FF0192	53JTN4	53JTN4_5	yes	Braggs apple cider vinegar	Braggs apple cider vinegar	apple	vinegar	replicate_1
+FF0192	53JTN4	53JTN4_28	yes	Braggs apple cider vinegar	Braggs apple cider vinegar	apple	vinegar	replicate_2
+FF0153	DNWTWM	DNWTWM_12	yes	britt's pickles	britt's pickles	cucumber	dill pickle	replicate_1
+FF0155	DNWTWM	DNWTWM_14	yes	bubbie's baby kosher dill pickles	bubbie's baby kosher dill pickles	cucumber	dill pickle	replicate_1
+FF0155	M6PXYP	M6PXYP_4	yes	Bubbie's baby kosher dill pickles	Bubbie's baby kosher dill pickles	cucumber	dill pickle	replicate_2
+FF0219	NQGVPS	NQGVPS_2	yes	Burlap & Barrel Iru	Burlap & Barrel Iru	locust bean	iru	replicate_1
+FF0219	NQGVPS	NQGVPS_25	yes	Burlap & Barrel Iru	Burlap & Barrel Iru	locust bean	iru	replicate_2
+FF0218	NQGVPS	NQGVPS_1	yes	Burlap & Barrel white peppercorns	Burlap & Barrel white peppercorns	pepper	peppercorn	replicate_1
+FF0218	NQGVPS	NQGVPS_24	yes	Burlap & Barrel white peppercorns	Burlap & Barrel white peppercorns	pepper	peppercorn	replicate_2
+FF0229	NQGVPS	NQGVPS_11	yes	Cabot Clothbound cheese	Cabot Clothbound cheese	milk	cheese	replicate_1
+FF0229	NQGVPS	NQGVPS_34	yes	Cabot Clothbound cheese	Cabot Clothbound cheese	milk	cheese	replicate_2
+FF0198	53JTN4	53JTN4_6	yes	Cafe Colucci injera batter	Cafe Colucci injera batter	teff	injera	replicate_1
+FF0198	53JTN4	53JTN4_29	yes	Cafe Colucci injera batter	Cafe Colucci injera batter	teff	injera	replicate_2
+FF0199	53JTN4	53JTN4_7	yes	Cafe Colucci injera cooked	Cafe Colucci injera cooked	teff	injera	replicate_1
+FF0199	53JTN4	53JTN4_30	yes	Cafe Colucci injera cooked	Cafe Colucci injera cooked	teff	injera	replicate_2
+FF0242	4M38F8	4M38F8_3	yes	carrot nukazuke	carrot nukazuke	rice	nukazuke	replicate_1
+FF0242	4M38F8	4M38F8_26	yes	carrot nukazuke	carrot nukazuke	rice	nukazuke	replicate_2
+FF0223	NQGVPS	NQGVPS_6	yes	Chantle Sourdough	Chantle Sourdough	wheat	sourdough	replicate_1
+FF0223	NQGVPS	NQGVPS_29	yes	Chantle Sourdough	Chantle Sourdough	wheat	sourdough	replicate_2
+FF0224	NQGVPS	NQGVPS_7	yes	CJ Doenjang	CJ Doenjang	soybean	Doenjang	replicate_1
+FF0224	NQGVPS	NQGVPS_30	yes	CJ Doenjang	CJ Doenjang	soybean	Doenjang	replicate_2
+FF0140	Z6YWP9	Z6YWP9_3	yes	Cultured Beets with fennel	Cultured Beets with fennel	beet	pickled vegetable	replicate_1
+FF0140	Z6YWP9	Z6YWP9_26	yes	Cultured Beets with fennel	Cultured Beets with fennel	beet	pickled vegetable	replicate_2
+FF0156	DNWTWM	DNWTWM_15	yes	cultured classic dills	cultured classic dills	cucumber	dill pickle	replicate_1
+FF0162	DNWTWM	DNWTWM_20	yes	cultured napa cabbage kimchi	cultured napa cabbage kimchi	cabbage	kimchi	replicate_1
+FF0162	M6PXYP	M6PXYP_8	yes	cultured napa cabbage kimchi	cultured napa cabbage kimchi	cabbage	kimchi	replicate_2
+FF0202	53JTN4	53JTN4_10	yes	Cultured Pickle Chile paste	Cultured Pickle Chile paste	chile	fermented chili paste	replicate_1
+FF0202	53JTN4	53JTN4_33	yes	Cultured Pickle Chile paste	Cultured Pickle Chile paste	chile	fermented chili paste	replicate_2
+FF0201	53JTN4	53JTN4_9	yes	Cultured Pickle Indian pickled limes	Cultured Pickle Indian pickled limes	lime	pickled fruit	replicate_1
+FF0201	53JTN4	53JTN4_32	yes	Cultured Pickle Indian pickled limes	Cultured Pickle Indian pickled limes	lime	pickled fruit	replicate_2
+FF0203	53JTN4	53JTN4_11	yes	Cultured Pickle umeboshi	Cultured Pickle umeboshi	plum	pickled fruit	replicate_1
+FF0203	53JTN4	53JTN4_34	yes	Cultured Pickle umeboshi	Cultured Pickle umeboshi	plum	pickled fruit	replicate_2
+FF0152	DNWTWM	DNWTWM_10	yes	cultured raw vintage kraut	cultured raw vintage kraut	cabbage	sauerkraut	replicate_1
+FF0237	NQGVPS	NQGVPS_19	yes	cultured sea kraut	cultured sea kraut	cabbage	sauerkraut	replicate_1
+FF0237	NQGVPS	NQGVPS_42	yes	cultured sea kraut	cultured sea kraut	cabbage	sauerkraut	replicate_2
+FF0210	53JTN4	53JTN4_16	yes	Cultured spicy okra	Cultured spicy okra	okra	pickled vegetable	replicate_1
+FF0210	53JTN4	53JTN4_39	yes	Cultured spicy okra	Cultured spicy okra	okra	pickled vegetable	replicate_2
+FF0248	4M38F8	4M38F8_8	yes	dosa batter	dosa batter	rice	dosa	replicate_1
+FF0248	4M38F8	4M38F8_31	yes	dosa batter	dosa batter	rice	dosa	replicate_2
+FF0179	Z6YWP9	Z6YWP9_16	yes	Dragonfly preserved bean curd in chili oil	Dragonfly preserved bean curd in chili oil	soybean	fermented tofu	replicate_1
+FF0179	Z6YWP9	Z6YWP9_39	yes	Dragonfly preserved bean curd in chili oil	Dragonfly preserved bean curd in chili oil	soybean	fermented tofu	replicate_2
+FF0220	NQGVPS	NQGVPS_3	yes	Elizabeth Sourdough	Elizabeth Sourdough	wheat	sourdough	replicate_1
+FF0220	NQGVPS	NQGVPS_26	yes	Elizabeth Sourdough	Elizabeth Sourdough	wheat	sourdough	replicate_2
+FF0187	53JTN4	53JTN4_1	yes	Equal Exchange 92% cacao total eclipse chocolate	Equal Exchange 92% cacao total eclipse chocolate	cacao	chocolate	replicate_1
+FF0187	53JTN4	53JTN4_24	yes	Equal Exchange 92% cacao total eclipse chocolate	Equal Exchange 92% cacao total eclipse chocolate	cacao	chocolate	replicate_2
+FF0256	4M38F8	4M38F8_12	yes	fermented black beans (douchi)	fermented black beans (douchi)	soybean	douchi	replicate_1
+FF0256	4M38F8	4M38F8_35	yes	fermented black beans (douchi)	fermented black beans (douchi)	soybean	douchi	replicate_2
+FF0086	Z6YWP9	Z6YWP9_2	yes	Fermented seaweed salad	Fermented seaweed salad	kelp	pickled vegetable	replicate_1
+FF0086	Z6YWP9	Z6YWP9_25	yes	Fermented seaweed salad	Fermented seaweed salad	kelp	pickled vegetable	replicate_2
+FF0243	4M38F8	4M38F8_4	yes	Filmjolk yogurt	Filmjolk yogurt	milk	yogurt	replicate_1
+FF0243	4M38F8	4M38F8_27	yes	Filmjolk yogurt	Filmjolk yogurt	milk	yogurt	replicate_2
+FF0183	Z6YWP9	Z6YWP9_19	yes	Fra'mani salametto salame	Fra'mani salametto salame	pork	salami	replicate_1
+FF0183	Z6YWP9	Z6YWP9_42	yes	Fra'mani salametto salame	Fra'mani salametto salame	pork	salami	replicate_2
+FF0234	NQGVPS	NQGVPS_16	yes	Gochujang	Gochujang	chile	fermented chili paste	replicate_1
+FF0234	NQGVPS	NQGVPS_39	yes	Gochujang	Gochujang	chile	fermented chili paste	replicate_2
+FF0178	Z6YWP9	Z6YWP9_15	yes	Golden State Pickle Works cabbage w/ caraway	Golden State Pickle Works cabbage w/ caraway	cabbage	sauerkraut	replicate_1
+FF0178	Z6YWP9	Z6YWP9_38	yes	Golden State Pickle Works cabbage w/ caraway	Golden State Pickle Works cabbage w/ caraway	cabbage	sauerkraut	replicate_2
+FF0130	4M38F8	4M38F8_16	yes	good culture cottage cheese	good culture cottage cheese	milk	cottage cheese	replicate_1
+FF0130	4M38F8	4M38F8_39	yes	good culture cottage cheese	good culture cottage cheese	milk	cottage cheese	replicate_2
+FF0222	NQGVPS	NQGVPS_5	yes	Grandios Yellow pap/ogi	Grandios Yellow pap/ogi	corn	ogi	replicate_1
+FF0222	NQGVPS	NQGVPS_28	yes	Grandios Yellow pap/ogi	Grandios Yellow pap/ogi	corn	ogi	replicate_2
+FF0173	Z6YWP9	Z6YWP9_10	yes	GT's kombucha	GT's kombucha	sugar	kombucha	replicate_1
+FF0173	Z6YWP9	Z6YWP9_33	yes	GT's kombucha	GT's kombucha	sugar	kombucha	replicate_2
+FF0232	NQGVPS	NQGVPS_14	yes	Harbison Cheese	Harbison Cheese	milk	cheese	replicate_1
+FF0232	NQGVPS	NQGVPS_37	yes	Harbison Cheese	Harbison Cheese	milk	cheese	replicate_2
+FF0175	Z6YWP9	Z6YWP9_12	yes	Huy fong sriracha chili sauce	Huy fong sriracha chili sauce	chile	fermented chili paste	replicate_1
+FF0175	Z6YWP9	Z6YWP9_35	yes	Huy fong sriracha chili sauce	Huy fong sriracha chili sauce	chile	fermented chili paste	replicate_2
+400uM ILA	44R9PF	44R9PF_3	yes	Indole-3-lactic acid	Indole-3-lactic acid	NA	NA	replicate_1
+400uM ILA	44R9PF	44R9PF_11	yes	Indole-3-lactic acid	Indole-3-lactic acid	NA	NA	replicate_2
+ruxolitinib	44R9PF	44R9PF_6	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_6
+ruxolitinib	44R9PF	44R9PF_14	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_7
+ruxolitinib	4M38F8	4M38F8_21	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_4
+ruxolitinib	4M38F8	4M38F8_44	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_5
+ruxolitinib	M6PXYP	M6PXYP_9	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_1
+ruxolitinib	NQGVPS	NQGVPS_21	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_2
+ruxolitinib	NQGVPS	NQGVPS_44	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_3
+FF0239	4M38F8	4M38F8_1	yes	jalapeno kasuzuke (18mo)	jalapeno kasuzuke (18mo)	rice	kasuzuke	replicate_1
+FF0239	4M38F8	4M38F8_24	yes	jalapeno kasuzuke (18mo)	jalapeno kasuzuke (18mo)	rice	kasuzuke	replicate_2
+FF0158	DNWTWM	DNWTWM_18	yes	jongga mat kimchi	jongga mat kimchi	cabbage	kimchi	replicate_1
+FF0184	Z6YWP9	Z6YWP9_20	yes	Journeyman meat co saucisson sec salame	Journeyman meat co saucisson sec salame	pork	salami	replicate_1
+FF0184	Z6YWP9	Z6YWP9_43	yes	Journeyman meat co saucisson sec salame	Journeyman meat co saucisson sec salame	pork	salami	replicate_2
+FF0247	4M38F8	4M38F8_7	yes	kefir	kefir	milk	yogurt	replicate_1
+FF0247	4M38F8	4M38F8_30	yes	kefir	kefir	milk	yogurt	replicate_2
+FF0123	4M38F8	4M38F8_14	yes	kefirlab probiotic kefir	kefirlab probiotic kefir	milk	kefir	replicate_1
+FF0123	4M38F8	4M38F8_37	yes	kefirlab probiotic kefir	kefirlab probiotic kefir	milk	kefir	replicate_2
+FF0262	4M38F8	4M38F8_20	yes	Kelly Franson amazake	Kelly Franson amazake	rice	amazake	replicate_1
+FF0262	4M38F8	4M38F8_43	yes	Kelly Franson amazake	Kelly Franson amazake	rice	amazake	replicate_2
+FF0212	53JTN4	53JTN4_18	yes	Kopabana cassava couscous / attieke	Kopabana cassava couscous / attieke	cassava	attieke	replicate_1
+FF0212	53JTN4	53JTN4_41	yes	Kopabana cassava couscous / attieke	Kopabana cassava couscous / attieke	cassava	attieke	replicate_2
+FF0211	53JTN4	53JTN4_17	yes	Kopabana cassava fufu	Kopabana cassava fufu	cassava	fufu	replicate_1
+FF0211	53JTN4	53JTN4_40	yes	Kopabana cassava fufu	Kopabana cassava fufu	cassava	fufu	replicate_2
+FF0137	4M38F8	4M38F8_17	yes	le gryuere switzerland	le gryuere switzerland	milk	cheese	replicate_2
+FF0137	4M38F8	4M38F8_40	yes	le gryuere switzerland	le gryuere switzerland	milk	cheese	replicate_3
+FF0137	DNWTWM	DNWTWM_4	yes	le gryuere switzerland	le gryuere switzerland	milk	cheese	replicate_1
+FF0181	Z6YWP9	Z6YWP9_18	yes	Lightlife organic tempeh original	Lightlife organic tempeh original	soybean	tempeh	replicate_1
+FF0181	Z6YWP9	Z6YWP9_41	yes	Lightlife organic tempeh original	Lightlife organic tempeh original	soybean	tempeh	replicate_2
+FF0141	Z6YWP9	Z6YWP9_4	yes	local culture beet + fennel	local culture beet + fennel	cabbage	pickled vegetable	replicate_1
+FF0141	Z6YWP9	Z6YWP9_27	yes	local culture beet + fennel	local culture beet + fennel	cabbage	pickled vegetable	replicate_2
+POS	44R9PF	44R9PF_7	yes	LPS only	positive control	NA	NA	replicate_7
+POS	44R9PF	44R9PF_15	yes	LPS only	positive control	NA	NA	replicate_8
+POS	4M38F8	4M38F8_22	yes	LPS only	positive control	NA	NA	replicate_5
+POS	4M38F8	4M38F8_45	yes	LPS only	positive control	NA	NA	replicate_6
+POS	53JTN4	53JTN4_22	yes	LPS only	positive control	NA	NA	replicate_9
+POS	53JTN4	53JTN4_45	yes	LPS only	positive control	NA	NA	replicate_10
+POS	DNWTWM	DNWTWM_22	yes	LPS only	positive control	NA	NA	replicate_1
+POS	M6PXYP	M6PXYP_10	yes	LPS only	positive control	NA	NA	replicate_2
+POS	NQGVPS	NQGVPS_22	yes	LPS only	positive control	NA	NA	replicate_3
+POS	NQGVPS	NQGVPS_45	yes	LPS only	positive control	NA	NA	replicate_4
+POS	Z6YWP9	Z6YWP9_22	yes	LPS only	positive control	NA	NA	replicate_11
+POS	Z6YWP9	Z6YWP9_45	yes	LPS only	positive control	NA	NA	replicate_12
+FF0227	NQGVPS	NQGVPS_9	yes	Mango pickle	Mango pickle	mango	pickled fruit	replicate_1
+FF0227	NQGVPS	NQGVPS_32	yes	Mango pickle	Mango pickle	mango	pickled fruit	replicate_2
+FF0176	Z6YWP9	Z6YWP9_13	yes	Mani pitted castelvetrano olives	Mani pitted castelvetrano olives	olive	olives	replicate_1
+FF0176	Z6YWP9	Z6YWP9_36	yes	Mani pitted castelvetrano olives	Mani pitted castelvetrano olives	olive	olives	replicate_2
+FF0251	4M38F8	4M38F8_10	yes	millet dosa	millet dosa	millet	dosa	replicate_1
+FF0251	4M38F8	4M38F8_33	yes	millet dosa	millet dosa	millet	dosa	replicate_2
+FF0250	4M38F8	4M38F8_9	yes	millet dosa batter	millet dosa batter	millet	dosa	replicate_1
+FF0250	4M38F8	4M38F8_32	yes	millet dosa batter	millet dosa batter	millet	dosa	replicate_2
+FF0236	NQGVPS	NQGVPS_18	yes	morel mushroom miso	morel mushroom miso	chickpea	miso	replicate_1
+FF0236	NQGVPS	NQGVPS_41	yes	morel mushroom miso	morel mushroom miso	chickpea	miso	replicate_2
+FF0231	NQGVPS	NQGVPS_13	yes	Moses Sleeper cheese	Moses Sleeper cheese	milk	cheese	replicate_1
+FF0231	NQGVPS	NQGVPS_36	yes	Moses Sleeper cheese	Moses Sleeper cheese	milk	cheese	replicate_2
+FF0160	DNWTWM	DNWTWM_19	yes	"mother in laow's kimchi, house"	"mother in laow's kimchi, house"	cabbage	kimchi	replicate_1
+PDTC	53JTN4	53JTN4_21	yes	NFKB inhibitor PDTC	NFKB inhibitor PDTC	NA	NA	replicate_1
+PDTC	53JTN4	53JTN4_44	yes	NFKB inhibitor PDTC	NFKB inhibitor PDTC	NA	NA	replicate_2
+PDTC	DNWTWM	DNWTWM_21	yes	NFKB inhibitor PDTC	NFKB inhibitor PDTC	NA	NA	replicate_5
+PDTC	Z6YWP9	Z6YWP9_21	yes	NFKB inhibitor PDTC	NFKB inhibitor PDTC	NA	NA	replicate_3
+PDTC	Z6YWP9	Z6YWP9_44	yes	NFKB inhibitor PDTC	NFKB inhibitor PDTC	NA	NA	replicate_4
+NEG	44R9PF	44R9PF_8	no	no treatment	negative control	NA	NA	replicate_7
+NEG	44R9PF	44R9PF_16	no	no treatment	negative control	NA	NA	replicate_8
+NEG	4M38F8	4M38F8_23	no	no treatment	negative control	NA	NA	replicate_5
+NEG	4M38F8	4M38F8_46	no	no treatment	negative control	NA	NA	replicate_6
+NEG	53JTN4	53JTN4_23	no	no treatment	negative control	NA	NA	replicate_9
+NEG	53JTN4	53JTN4_46	no	no treatment	negative control	NA	NA	replicate_10
+NEG	DNWTWM	DNWTWM_23	no	no treatment	negative control	NA	NA	replicate_1
+NEG	M6PXYP	M6PXYP_11	no	no treatment	negative control	NA	NA	replicate_2
+NEG	NQGVPS	NQGVPS_23	no	no treatment	negative control	NA	NA	replicate_3
+NEG	NQGVPS	NQGVPS_46	no	no treatment	negative control	NA	NA	replicate_4
+NEG	Z6YWP9	Z6YWP9_23	no	no treatment	negative control	NA	NA	replicate_11
+NEG	Z6YWP9	Z6YWP9_46	no	no treatment	negative control	NA	NA	replicate_12
+FF0180	Z6YWP9	Z6YWP9_17	yes	NY natto black	NY natto black	soybean	natto	replicate_1
+FF0180	Z6YWP9	Z6YWP9_40	yes	NY natto black	NY natto black	soybean	natto	replicate_2
+100uM PLA	44R9PF	44R9PF_4	yes	Phenyllactic acid	Phenyllactic acid	NA	NA	replicate_1
+100uM PLA	44R9PF	44R9PF_12	yes	Phenyllactic acid	Phenyllactic acid	NA	NA	replicate_2
+FF0245	4M38F8	4M38F8_5	yes	Piima yogurt	Piima yogurt	milk	yogurt	replicate_1
+FF0245	4M38F8	4M38F8_28	yes	Piima yogurt	Piima yogurt	milk	yogurt	replicate_2
+FF0225	NQGVPS	NQGVPS_8	yes	Rachel Sourdough	Rachel Sourdough	wheat	sourdough	replicate_1
+FF0225	NQGVPS	NQGVPS_31	yes	Rachel Sourdough	Rachel Sourdough	wheat	sourdough	replicate_2
+FF0170	DNWTWM	DNWTWM_6	yes	raw cabbage	raw cabbage	cabbage	cabbage	replicate_1
+FF0170	M6PXYP	M6PXYP_5	yes	raw cabbage	raw cabbage	cabbage	cabbage	replicate_2
+FF0169	DNWTWM	DNWTWM_11	yes	raw cucumber	raw cucumber	cucumber	cucumber	replicate_1
+FF0169	M6PXYP	M6PXYP_3	yes	raw cucumber	raw cucumber	cucumber	cucumber	replicate_2
+FF0171	DNWTWM	DNWTWM_16	yes	raw napa cabbage	raw napa cabbage	cabbage	cabbage	replicate_1
+FF0171	M6PXYP	M6PXYP_7	yes	raw napa cabbage	raw napa cabbage	cabbage	cabbage	replicate_2
+FF0172	Z6YWP9	Z6YWP9_9	yes	rejuvelac	rejuvelac	rye berries	rejuvelac	replicate_1
+FF0172	Z6YWP9	Z6YWP9_32	yes	rejuvelac	rejuvelac	rye berries	rejuvelac	replicate_2
+FF0221	NQGVPS	NQGVPS_4	yes	Shastha Foods Idli/Idli batter	Shastha Foods Idli/Idli batter	rice	idli	replicate_1
+FF0221	NQGVPS	NQGVPS_27	yes	Shastha Foods Idli/Idli batter	Shastha Foods Idli/Idli batter	rice	idli	replicate_2
+FF0157	DNWTWM	DNWTWM_17	yes	sinto gourmet kimchi (mild white)	sinto gourmet kimchi (mild white)	cabbage	kimchi	replicate_1
+FF0142	Z6YWP9	Z6YWP9_5	yes	Sinto Gourmet kraut-chi crunchy beet	Sinto Gourmet kraut-chi crunchy beet	cabbage	sauerkraut	replicate_1
+FF0142	Z6YWP9	Z6YWP9_28	yes	Sinto Gourmet kraut-chi crunchy beet	Sinto Gourmet kraut-chi crunchy beet	cabbage	sauerkraut	replicate_2
+FF0154	DNWTWM	DNWTWM_13	yes	"sonoma brinery fresh pickles, manhatton style"	"sonoma brinery fresh pickles, manhatton style"	cucumber	dill pickle	replicate_1
+FF0121	4M38F8	4M38F8_13	yes	"Straus organic kefir, plain"	Straus organic kefir	milk	kefir	replicate_2
+FF0121	4M38F8	4M38F8_36	yes	"Straus organic kefir, plain"	Straus organic kefir	milk	kefir	replicate_3
+FF0121	DNWTWM	DNWTWM_2	yes	"Straus organic kefir, plain"	Straus organic kefir	milk	kefir	replicate_1
+FF0120	DNWTWM	DNWTWM_1	yes	Straus organic milk	Straus organic milk	milk	milk	replicate_1
+FF0120	M6PXYP	M6PXYP_1	yes	Straus organic milk	Straus organic milk	milk	milk	replicate_2
+FF0125	DNWTWM	DNWTWM_3	yes	straus organic yogurt	straus organic yogurt	milk	yogurt	replicate_1
+FF0125	M6PXYP	M6PXYP_2	yes	straus organic yogurt	straus organic yogurt	milk	yogurt	replicate_2
+FF0139	DNWTWM	DNWTWM_5	yes	taleggio	taleggio	milk	cheese	replicate_1
+FF0209	53JTN4	53JTN4_15	yes	Taro brand sour poi	Taro brand sour poi	taro	poi	replicate_1
+FF0209	53JTN4	53JTN4_38	yes	Taro brand sour poi	Taro brand sour poi	taro	poi	replicate_2
+FF0188	53JTN4	53JTN4_2	yes	Taza 95% dark chocolate wicked dark chocolate	Taza 95% dark chocolate wicked dark chocolate	cacao	chocolate	replicate_1
+FF0188	53JTN4	53JTN4_25	yes	Taza 95% dark chocolate wicked dark chocolate	Taza 95% dark chocolate wicked dark chocolate	cacao	chocolate	replicate_2
+FF0191	53JTN4	53JTN4_4	yes	The Tao of Tea organic Topaz puer	The Tao of Tea organic Topaz puer	tea	tea	replicate_1
+FF0191	53JTN4	53JTN4_27	yes	The Tao of Tea organic Topaz puer	The Tao of Tea organic Topaz puer	tea	tea	replicate_2
+FF0036	Z6YWP9	Z6YWP9_1	yes	Traditional Red Miso	Traditional Red Miso	soybean	Miso	replicate_1
+FF0036	Z6YWP9	Z6YWP9_24	yes	Traditional Red Miso	Traditional Red Miso	soybean	Miso	replicate_2
+FF0235	NQGVPS	NQGVPS_17	yes	"Turmeric, Ginger, Jalepeno sauerkraut"	"Turmeric, Ginger, Jalepeno sauerkraut"	cabbage	sauerkraut	replicate_1
+FF0235	NQGVPS	NQGVPS_40	yes	"Turmeric, Ginger, Jalepeno sauerkraut"	"Turmeric, Ginger, Jalepeno sauerkraut"	cabbage	sauerkraut	replicate_2
+FF0246	4M38F8	4M38F8_6	yes	Viili yogurt	Viili yogurt	milk	yogurt	replicate_1
+FF0246	4M38F8	4M38F8_29	yes	Viili yogurt	Viili yogurt	milk	yogurt	replicate_2
+FF0213	53JTN4	53JTN4_19	yes	Wala ga kenkey	Wala ga kenkey	corn	kenkey	replicate_1
+FF0213	53JTN4	53JTN4_42	yes	Wala ga kenkey	Wala ga kenkey	corn	kenkey	replicate_2
+FF0254	4M38F8	4M38F8_11	yes	water kefir	water kefir	sugar	water kefir	replicate_1
+FF0254	4M38F8	4M38F8_34	yes	water kefir	water kefir	sugar	water kefir	replicate_2
+FF0206	53JTN4	53JTN4_14	yes	Wild West Ferments Chili paste	Wild West Ferments Chili paste	chile	fermented chili paste	replicate_1
+FF0206	53JTN4	53JTN4_37	yes	Wild West Ferments Chili paste	Wild West Ferments Chili paste	chile	fermented chili paste	replicate_2
+FF0143	Z6YWP9	Z6YWP9_6	yes	wild west ferments moroccan beets	wild west ferments moroccan beets	beet	pickled vegetable	replicate_1
+FF0143	Z6YWP9	Z6YWP9_29	yes	wild west ferments moroccan beets	wild west ferments moroccan beets	beet	pickled vegetable	replicate_2
+FF0205	53JTN4	53JTN4_13	yes	Wild West Ferments preserved lemon	Wild West Ferments preserved lemon	lemon	pickled fruit	replicate_1
+FF0205	53JTN4	53JTN4_36	yes	Wild West Ferments preserved lemon	Wild West Ferments preserved lemon	lemon	pickled fruit	replicate_2
+FF0146	4M38F8	4M38F8_18	yes	wild west ferments signature sauerkraut	wild west ferments signature sauerkraut	cabbage	sauerkraut	replicate_2
+FF0146	4M38F8	4M38F8_41	yes	wild west ferments signature sauerkraut	wild west ferments signature sauerkraut	cabbage	sauerkraut	replicate_3
+FF0146	DNWTWM	DNWTWM_8	yes	wild west ferments signature sauerkraut	wild west ferments signature sauerkraut	cabbage	sauerkraut	replicate_1
+FF0145	DNWTWM	DNWTWM_7	yes	wild west ferments simply sauerkraut	wild west ferments simply sauerkraut	cabbage	sauerkraut	replicate_3
+FF0145	M6PXYP	M6PXYP_6	yes	wild west ferments simply sauerkraut	wild west ferments simply sauerkraut	cabbage	sauerkraut	replicate_4
+FF0145	Z6YWP9	Z6YWP9_8	yes	wild west ferments simply sauerkraut	wild west ferments simply sauerkraut	cabbage	sauerkraut	replicate_1
+FF0145	Z6YWP9	Z6YWP9_31	yes	wild west ferments simply sauerkraut	wild west ferments simply sauerkraut	cabbage	sauerkraut	replicate_2
+FF0204	53JTN4	53JTN4_12	yes	Wild West Ferments spicy Italian pickle	Wild West Ferments spicy Italian pickle	cucumber	dill pickle	replicate_1
+FF0204	53JTN4	53JTN4_35	yes	Wild West Ferments spicy Italian pickle	Wild West Ferments spicy Italian pickle	cucumber	dill pickle	replicate_2
+FF0174	Z6YWP9	Z6YWP9_11	yes	Wildbrine probiotic sriracha	Wildbrine probiotic sriracha	cabbage	fermented chili paste	replicate_1
+FF0174	Z6YWP9	Z6YWP9_34	yes	Wildbrine probiotic sriracha	Wildbrine probiotic sriracha	cabbage	fermented chili paste	replicate_2
+FF0149	4M38F8	4M38F8_19	yes	wildbrine raw organic kraut	wildbrine raw organic kraut	cabbage	sauerkraut	replicate_2
+FF0149	4M38F8	4M38F8_42	yes	wildbrine raw organic kraut	wildbrine raw organic kraut	cabbage	sauerkraut	replicate_3
+FF0149	DNWTWM	DNWTWM_9	yes	wildbrine raw organic kraut	wildbrine raw organic kraut	cabbage	sauerkraut	replicate_1
+FF0144	Z6YWP9	Z6YWP9_7	yes	wildbrine red beet & cabbage	wildbrine red beet & cabbage	cabbage	sauerkraut	replicate_1
+FF0144	Z6YWP9	Z6YWP9_30	yes	wildbrine red beet & cabbage	wildbrine red beet & cabbage	cabbage	sauerkraut	replicate_2
+FF0233	NQGVPS	NQGVPS_15	yes	Winnimere cheese	Winnimere cheese	milk	cheese	replicate_1
+FF0233	NQGVPS	NQGVPS_38	yes	Winnimere cheese	Winnimere cheese	milk	cheese	replicate_2
+FF0200	53JTN4	53JTN4_8	yes	Wise Goat honey fermented garlic	Wise Goat honey fermented garlic	garlic	pickled vegetable	replicate_1
+FF0200	53JTN4	53JTN4_31	yes	Wise Goat honey fermented garlic	Wise Goat honey fermented garlic	garlic	pickled vegetable	replicate_2
