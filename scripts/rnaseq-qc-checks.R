@@ -32,7 +32,7 @@ mapping_files <- list.files(mapping_stats_dir, pattern = "-mapping-stats-reads.c
 # combine all mapping stats CSVs together, filter out the singleton samples
 combined_mapping_stats_df <- mapping_files %>% 
   set_names(~ str_remove(basename(.x), "-mapping-stats-reads.csv")) %>% 
-  map(\(f) read_csv(f, show_col_types = FALSE) %>% rename(sample = 1)) %>%
+  map(\(f) read_csv(f, show_col_types = FALSE) %>% dplyr::rename(sample = 1)) %>%
   list_rbind(names_to = "batch") %>% 
   mutate(
     sample = case_when(
@@ -55,7 +55,7 @@ gene_counts_files <- list.files(gene_counts_dir, pattern = "-summary.csv", full.
 
 combined_gene_counts_df <- gene_counts_files %>% 
   set_names(~ str_remove(basename(.x), "-gene-biotype-5plus_reads-summary.csv")) %>% 
-  map(\(f) read_csv(f, show_col_types = FALSE) %>% rename(sample = 1)) %>%
+  map(\(f) read_csv(f, show_col_types = FALSE) %>% dplyr::rename(sample = 1)) %>%
   list_rbind(names_to = "batch") %>% 
   mutate(
     sample = case_when(
@@ -71,7 +71,7 @@ combined_gene_counts_df <- gene_counts_files %>%
 # join sample map info, mapping stats, and gene biotype counts for the filtered, non-singleton samples
 combined_qc_stats_df <- left_join(filtered_sample_map, combined_mapping_stats_df) %>% 
   left_join(combined_gene_counts_df) %>% 
-  rename(uniquely_mapped = `Uniquely Mapped`, multi_mapped = `Multi-mapped`, unmapped = `Unmapped`) %>% 
+  dplyr::rename(uniquely_mapped = `Uniquely Mapped`, multi_mapped = `Multi-mapped`, unmapped = `Unmapped`) %>% 
   mutate(
     total_reads = uniquely_mapped + multi_mapped + unmapped, 
     percent_mapped = (uniquely_mapped + multi_mapped) / total_reads * 100
@@ -105,5 +105,39 @@ gene_counts_plot <- ggplot(plot_df, aes(x=sample, y=protein_coding, fill=batch))
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
   scale_y_continuous(expand = c(0,0))
 
+# plot mapping rate vs count of protein coding genes
+pc_mapping_comps_plot <- ggplot(plot_df, aes(x=protein_coding, y=percent_mapped, color=batch)) +
+  geom_point(size=3) +
+  labs(
+    x="Count of Protein Coding Genes in a Sample",
+    y="Percentage of Reads Mapped to Reference Genomes in a Sample",
+    color="Batch",
+    title="Counts of Protein Coding Genes vs \n Percentage of Reads Mapped to Reference Genomes in a Sample"
+  ) +
+  scale_color_brewer(palette="Paired") +
+  theme_classic() + 
+  theme(legend.position = "bottom") +
+  scale_y_continuous(expand = c(0,0)) +
+  scale_x_continuous(expand=c(0,0))
+
+# save plots
 ggsave("figures/mapping-stats-plot.png", mapping_plot, width=18, height=8, units=c("in"))
 ggsave("figures/protein-coding-gene-counts-plot.png", gene_counts_plot, width=18, height=8, units=c("in"))
+ggsave("figures/pc-mapping-comps-plot.png", pc_mapping_comps_plot, width=18, height=8, units=c("in"))
+
+# calculate median mapping rate and protein coding gene count
+median_mapping_rate <- combined_qc_stats_df %>% 
+  summarise(median(percent_mapped))
+
+median_protein_coding_count <- combined_qc_stats_df %>% 
+  summarise(median(protein_coding))
+
+# remove samples with below 97% mapping rate, and then remove samples that are then singletons
+qced_sample_map <- combined_qc_stats_df %>% 
+  filter(percent_mapped > 97) %>% 
+  distinct() %>% 
+  group_by(sample_type) %>% 
+  filter(n() > 1) %>% 
+  ungroup()
+
+write_tsv(qced_sample_map, "metadata/rnaseq/2026-10-06-qced-sample-map.tsv")  

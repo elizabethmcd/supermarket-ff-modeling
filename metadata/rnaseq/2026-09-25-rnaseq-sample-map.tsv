@@ -90,13 +90,13 @@ FF0175	Z6YWP9	Z6YWP9_12	yes	Huy fong sriracha chili sauce	Huy fong sriracha chil
 FF0175	Z6YWP9	Z6YWP9_35	yes	Huy fong sriracha chili sauce	Huy fong sriracha chili sauce	chile	fermented chili paste	replicate_2
 400uM ILA	44R9PF	44R9PF_3	yes	Indole-3-lactic acid	Indole-3-lactic acid	NA	NA	replicate_1
 400uM ILA	44R9PF	44R9PF_11	yes	Indole-3-lactic acid	Indole-3-lactic acid	NA	NA	replicate_2
-ruxolitinib	44R9PF	44R9PF_6	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_6
-ruxolitinib	44R9PF	44R9PF_14	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_7
-ruxolitinib	4M38F8	4M38F8_21	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_4
-ruxolitinib	4M38F8	4M38F8_44	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_5
-ruxolitinib	M6PXYP	M6PXYP_9	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_1
-ruxolitinib	NQGVPS	NQGVPS_21	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_2
-ruxolitinib	NQGVPS	NQGVPS_44	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_3
+ruxolitinib	44R9PF	44R9PF_6	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_1
+ruxolitinib	44R9PF	44R9PF_14	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_2
+ruxolitinib	4M38F8	4M38F8_21	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_3
+ruxolitinib	4M38F8	4M38F8_44	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_4
+PDTC	M6PXYP	M6PXYP_9	yes	NFKB inhibitor PDTC	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_1
+ruxolitinib	NQGVPS	NQGVPS_21	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_5
+ruxolitinib	NQGVPS	NQGVPS_44	yes	Jak/Stat inhibitor ruxolitinib	Jak/Stat inhibitor ruxolitinib	NA	NA	replicate_6
 FF0239	4M38F8	4M38F8_1	yes	jalapeno kasuzuke (18mo)	jalapeno kasuzuke (18mo)	rice	kasuzuke	replicate_1
 FF0239	4M38F8	4M38F8_24	yes	jalapeno kasuzuke (18mo)	jalapeno kasuzuke (18mo)	rice	kasuzuke	replicate_2
 FF0158	DNWTWM	DNWTWM_18	yes	jongga mat kimchi	jongga mat kimchi	cabbage	kimchi	replicate_1
@@ -144,11 +144,11 @@ FF0236	NQGVPS	NQGVPS_41	yes	morel mushroom miso	morel mushroom miso	chickpea	mis
 FF0231	NQGVPS	NQGVPS_13	yes	Moses Sleeper cheese	Moses Sleeper cheese	milk	cheese	replicate_1
 FF0231	NQGVPS	NQGVPS_36	yes	Moses Sleeper cheese	Moses Sleeper cheese	milk	cheese	replicate_2
 FF0160	DNWTWM	DNWTWM_19	yes	"mother in laow's kimchi, house"	"mother in laow's kimchi, house"	cabbage	kimchi	replicate_1
-PDTC	53JTN4	53JTN4_21	yes	NFKB inhibitor PDTC	NFKB inhibitor PDTC	NA	NA	replicate_1
-PDTC	53JTN4	53JTN4_44	yes	NFKB inhibitor PDTC	NFKB inhibitor PDTC	NA	NA	replicate_2
-PDTC	DNWTWM	DNWTWM_21	yes	NFKB inhibitor PDTC	NFKB inhibitor PDTC	NA	NA	replicate_5
-PDTC	Z6YWP9	Z6YWP9_21	yes	NFKB inhibitor PDTC	NFKB inhibitor PDTC	NA	NA	replicate_3
-PDTC	Z6YWP9	Z6YWP9_44	yes	NFKB inhibitor PDTC	NFKB inhibitor PDTC	NA	NA	replicate_4
+PDTC	53JTN4	53JTN4_21	yes	NFKB inhibitor PDTC	NFKB inhibitor PDTC	NA	NA	replicate_2
+PDTC	53JTN4	53JTN4_44	yes	NFKB inhibitor PDTC	NFKB inhibitor PDTC	NA	NA	replicate_3
+PDTC	DNWTWM	DNWTWM_21	yes	NFKB inhibitor PDTC	NFKB inhibitor PDTC	NA	NA	replicate_4
+PDTC	Z6YWP9	Z6YWP9_21	yes	NFKB inhibitor PDTC	NFKB inhibitor PDTC	NA	NA	replicate_5
+PDTC	Z6YWP9	Z6YWP9_44	yes	NFKB inhibitor PDTC	NFKB inhibitor PDTC	NA	NA	replicate_6
 NEG	44R9PF	44R9PF_8	no	no treatment	negative control	NA	NA	replicate_7
 NEG	44R9PF	44R9PF_16	no	no treatment	negative control	NA	NA	replicate_8
 NEG	4M38F8	4M38F8_23	no	no treatment	negative control	NA	NA	replicate_5

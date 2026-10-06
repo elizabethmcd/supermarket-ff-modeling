@@ -1,3 +1,6 @@
+.RData
+.Rhistory
+*.DS_Store*
 *.Rproj
 raw_data/rnaseq/*.tsv
 raw_data/metabolomics/tidy_dfs/*.tsv
