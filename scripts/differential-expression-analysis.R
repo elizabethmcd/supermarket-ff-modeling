@@ -55,16 +55,15 @@ sample_metadata <- qced_sample_map %>%
 # check metadata and counts matrix match
 all(rownames(sample_metadata) == colnames(count_matrix))
 
-# LPS+ positive control treatment as reference for comparisons
-# Testing how the fermented food extracts differ from the LPS+ condition
-sample_metadata$sample_type <- relevel(sample_metadata$sample_type,
-                                       ref="positive.control")
-
 
 ###############################
 # DESeq object and basic QC plots and checks
 # check for batch effects between the sequencing runs
 ###############################
+# LPS+ positive control treatment as reference for comparisons
+# Testing how the fermented food extracts differ from the LPS+ condition
+sample_metadata$sample_type <- relevel(sample_metadata$sample_type,
+                                       ref="positive.control")
 # DESeq object
 # Design to test for effects of each sample_type (fermented food), and control effects of each batch
 dds <- DESeqDataSetFromMatrix(count_matrix,
@@ -194,15 +193,35 @@ dds <- dds[keep,]
 register(MulticoreParam(workers = parallel::detectCores() - 2))
 dds <- DESeq(dds, parallel = TRUE)
 
+# Create results list and table of comparisons to the LPS+ positive control and both drugs
 levs <- levels(dds$sample_type)
-comparisons <- setdiff(levs, c("positive.control", "negative.control"))
-res_list <- lapply(comparisons, function(l) {
-  results(dds, contrast = c("sample_type", l, "positive.control"))
-})
-names(res_list) <- comparisons
+drugs <- c("Jak.Stat.inhibitor.ruxolitinib", "NFKB.inhibitor.PDTC")
+refs <- c("positive.control", drugs)
 
-all_res <- bind_rows(lapply(names(res_list), function(l) {
-  as.data.frame(res_list[[l]]) %>%
-    tibble::rownames_to_column("gene") %>%
-    mutate(sample_type = l)
-}))
+# compare every non-control fermented food sample type to each reference (positive control and the drugs)
+contrast_grid <- expand.grid(
+  numerator = setdiff(levs, c("positive.control", "negative.control")),
+  denominator = refs,
+  stringsAsFactors = FALSE
+) %>% 
+  filter(numerator != denominator,
+         !(numerator %in% drugs & denominator %in% drugs))
+
+# run contrasts all in parallel that returns a data frame
+res_df <- bplapply(seq_len(nrow(contrast_grid)), function(i) {
+  num <- contrast_grid$numerator[i]
+  den <- contrast_grid$denominator[i]
+  r   <- results(dds, contrast = c("sample_type", num, den))
+  data.frame(gene           = rownames(r),
+             baseMean       = r$baseMean, # average of all normalized count values in all samples
+             log2FoldChange = r$log2FoldChange, # remaining columns specific to the contrast
+             lfcSE          = r$lfcSE,
+             stat           = r$stat,
+             pvalue         = r$pvalue,
+             padj           = r$padj,
+             sample_type    = num,
+             reference      = den)
+}, BPPARAM = MulticoreParam(workers = parallel::detectCores() - 2))
+
+all_res <- data.table::rbindlist(res_df) %>% as.data.frame()
+saveRDS(all_res, "all_res.rds")
