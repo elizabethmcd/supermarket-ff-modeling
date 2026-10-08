@@ -1,4 +1,6 @@
 library(tidyverse)
+library(readr)
+library(readxl)
 library(DESeq2)
 library(apeglm)
 library(ggrepel)
@@ -27,6 +29,10 @@ qced_samples <- qced_sample_map %>%
 count_table <- read_tsv("raw_data/rnaseq/2026-09-25-combined-expression-matrix.tsv") %>% 
   select(gene_id, gene_name, gene_biotype, all_of(qced_samples))
 
+gene_info <- count_table %>% 
+  select(gene_id, gene_name, gene_biotype) %>% 
+  dplyr::rename(gene = gene_id)
+
 # check that samples in the map and count table match
 map_samples <- qced_sample_map$sample
 counts_samples <- setdiff(colnames(count_table), c("gene_id", "gene_name", "gene_biotype"))
@@ -47,11 +53,17 @@ count_matrix <- count_table %>%
   as.matrix
 
 sample_metadata <- qced_sample_map %>% 
-  distinct(sample, sample_type, batch) %>% 
+  distinct(sample, sample_type, sample_code, batch) %>% 
   dplyr::slice(match(colnames(count_matrix), sample)) %>% 
   column_to_rownames("sample") %>% 
   mutate(sample_type = factor(make.names(sample_type)),
          batch = factor(batch))
+
+sample_codes <- sample_metadata %>% 
+  select(sample_type, sample_code) %>% 
+  tibble::remove_rownames() %>% 
+  distinct()
+  
 
 # check metadata and counts matrix match
 all(rownames(sample_metadata) == colnames(count_matrix))
@@ -59,7 +71,34 @@ all(rownames(sample_metadata) == colnames(count_matrix))
 ###############################
 # Select samples with IFN bioactivity at certain cutoffs
 ###############################
+bioactivity_df <- read_excel("raw_data/bioactivity/Fermented_food_data_mastersheet.xlsx", sheet = "full_data")
 
+# samples that show some anti-inflammatory activity by IFN
+bioactivity_ifn_filtered_codes <- bioactivity_df %>% 
+  filter(Sample_type == "sample" | Sample_type == "Sample") %>% 
+  dplyr::rename(sample_code = Sample_number) %>% 
+  filter(normalized_viability > 70) %>% 
+  filter(normalized_IFN <= 100) %>% 
+  select(sample_code) %>% 
+  unique() %>% 
+  pull(sample_code)
+
+# median ruxolitinib IFN activity
+ruxolitinib_median_IFN <- bioactivity_df %>% 
+  filter(Sample_number == "inhibitor2") %>% 
+  filter(normalized_viability > 70) %>% 
+  summarise(median(normalized_IFN)) %>% 
+  pull(`median(normalized_IFN)`)
+
+# samples that show at or below IFN compared to the median ruxolitinib IFN activity
+bioactivity_ifn_filtered_ruxo_level_codes <- bioactivity_df %>% 
+  filter(Sample_type == "sample") %>% 
+  dplyr::rename(sample_code = Sample_number) %>% 
+  filter(normalized_viability > 70) %>% 
+  group_by(sample_code) %>% 
+  summarise(median = median(normalized_IFN)) %>% 
+  filter(median <= ruxolitinib_median_IFN) %>% 
+  pull(sample_code)
 
 ###############################
 # DESeq object and basic QC plots and checks
@@ -134,6 +173,7 @@ mm <- model.matrix(~sample_type, colData(vsd))
 mat <- limma::removeBatchEffect(mat, batch=vsd$batch, design=mm)
 assay(vsd) <- mat
 pca <- plotPCA(vsd, intgroup = "batch", returnData = TRUE)
+plotPCA(vsd, intgroup = "batch")
 
 # pull metadata for certain clusters
 pca$far <- pca$PC1 > 30
@@ -186,13 +226,6 @@ summary(aov(PC2 ~ sample_type + batch, data = main_raw)) # correction ends up re
 ###############################
 # Differential expression analysis
 ###############################
-dds <- DESeqDataSetFromMatrix(count_matrix,
-                              colData = sample_metadata,
-                              design = ~ batch + sample_type)
-
-smallestGroupSize <- 2
-keep <- rowSums(counts(dds) >= 10) >= smallestGroupSize
-dds <- dds[keep,]
 
 # use BiocParallel for the DESeq analysis on dds object
 register(MulticoreParam(workers = parallel::detectCores() - 2))
@@ -226,7 +259,6 @@ saveRDS(dds, "dds_fitted.rds")
 saveRDS(all_res, "all_res_vs_LPS.rds")
 
 # summary on the results
-# Use 10% FDR to filter the adjusted p-values, corrected with Benjamini-Hochberg method
 alpha <- 0.05
 
 res_summary <- all_res %>%
@@ -244,23 +276,43 @@ res_summary <- all_res %>%
 
 #################################################
 # Comparisons of foods vs LPS+ for fold-change
+# Filter to foods that show some amount of anti-inflammatory activity from the IFN bioactivity assay
 # Specific food volcano plots vs LPS+
 #################################################
+# join results df with sample codes and gene metadata including gene name and biotype
+all_res_df_info <- all_res %>% 
+  left_join(gene_info) %>% 
+  left_join(sample_codes, by="sample_type") %>% 
+  select(gene, gene_name, gene_biotype, sample_type, sample_code, reference, baseMean, log2FoldChange, lfcSE, stat, pvalue, padj)
 
-# top DE genes for foods vs LPS+ condition
-top_de_genes <- all_res %>% 
+# filter for samples with some anti-inflamm activity from IFN bioassay
+base_filtered_codes <- c(bioactivity_ifn_filtered_codes, "POS", "PDTC", "ruxolitinib")
+
+base_anti_inflm_foods_df <- all_res_df_info %>% 
+  filter(sample_code %in% base_filtered_codes)
+
+# top DE genes for foods vs LPS+ condition for foods that meet the IFN bioactivity cutoff
+top_de_genes <- base_anti_inflm_foods_df %>% 
   filter(!is.na(padj), padj < 0.05) %>% 
   dplyr::count(gene, sort = TRUE) %>% 
   slice_head(n=50) %>% 
   pull(gene)
 
 # build genes x comparisons matrix
-lfc_mat <- all_res %>% 
+lfc_mat <- base_anti_inflm_foods_df %>% 
   filter(gene %in% top_de_genes) %>% 
   select(gene, sample_type, log2FoldChange) %>% 
   tidyr::pivot_wider(names_from = sample_type, values_from = log2FoldChange) %>% 
   tibble::column_to_rownames("gene") %>% 
   as.matrix()
+
+# ensemble Gene IDs to gene name
+id_to_name <- base_anti_inflm_foods_df %>%
+  dplyr::distinct(gene, gene_name) %>%
+  { setNames(.$gene_name, .$gene) }
+
+row_labels <- id_to_name[rownames(lfc_mat)]
+row_labels[is.na(row_labels) | row_labels == ""] <- rownames(lfc_mat)[is.na(row_labels) | row_labels == ""]
 
 # plot
 lim    <- max(abs(lfc_mat), na.rm = TRUE)
@@ -270,11 +322,14 @@ cols   <- colorRampPalette(c("blue", "white", "red"))(100)
 
 pheatmap(pmax(pmin(lfc_mat, lim), -lim),
          color = cols, breaks = breaks,
-         fontsize_col = 6)
+         labels_row = row_labels,
+         fontsize_col = 6,
+         fontsize_row = 5)
 
 
 #################################################
 # Function for comparing subset list of foods to drug controls
+# Filter to foods that show similar or lower activity IFN compared to drug ruxolitinib
 #################################################
 
 compare_to_drugs <- function(dds, foods,
