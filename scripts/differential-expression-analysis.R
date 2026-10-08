@@ -6,6 +6,7 @@ library(BiocParallel)
 library(pheatmap)
 library(RColorBrewer)
 library(glmpca)
+library(genefilter)
 
 ###############################
 # DESeq differential expression analysis of filtered RNAseq samples
@@ -16,7 +17,7 @@ library(glmpca)
 # qced sample map 
 qced_sample_map <- read_tsv("metadata/rnaseq/2026-10-06-qced-sample-map.tsv") %>% 
   mutate(sample = paste0(sample, "_count")) %>% 
-  select(sample, batch, sample_type)
+  select(sample, batch, sample_code, sample_type)
 
 # qced samples
 qced_samples <- qced_sample_map %>% 
@@ -54,6 +55,10 @@ sample_metadata <- qced_sample_map %>%
 
 # check metadata and counts matrix match
 all(rownames(sample_metadata) == colnames(count_matrix))
+
+###############################
+# Select samples with IFN bioactivity at certain cutoffs
+###############################
 
 
 ###############################
@@ -193,35 +198,110 @@ dds <- dds[keep,]
 register(MulticoreParam(workers = parallel::detectCores() - 2))
 dds <- DESeq(dds, parallel = TRUE)
 
-# Create results list and table of comparisons to the LPS+ positive control and both drugs
+# compare all samples to the positive control
 levs <- levels(dds$sample_type)
-drugs <- c("Jak.Stat.inhibitor.ruxolitinib", "NFKB.inhibitor.PDTC")
-refs <- c("positive.control", drugs)
+comparisons <- setdiff(levs, c("positive.control", "negative.control"))
 
-# compare every non-control fermented food sample type to each reference (positive control and the drugs)
-contrast_grid <- expand.grid(
-  numerator = setdiff(levs, c("positive.control", "negative.control")),
-  denominator = refs,
-  stringsAsFactors = FALSE
-) %>% 
-  filter(numerator != denominator,
-         !(numerator %in% drugs & denominator %in% drugs))
-
-# run contrasts all in parallel that returns a data frame
-res_df <- bplapply(seq_len(nrow(contrast_grid)), function(i) {
-  num <- contrast_grid$numerator[i]
-  den <- contrast_grid$denominator[i]
-  r   <- results(dds, contrast = c("sample_type", num, den))
+# output results df
+res_df <- lapply(comparisons, function(num) {
+  r <- results(dds, contrast = c("sample_type", num, "positive.control"), alpha = 0.05)
   data.frame(gene           = rownames(r),
-             baseMean       = r$baseMean, # average of all normalized count values in all samples
-             log2FoldChange = r$log2FoldChange, # remaining columns specific to the contrast
+             baseMean       = r$baseMean,
+             log2FoldChange = r$log2FoldChange,
              lfcSE          = r$lfcSE,
              stat           = r$stat,
              pvalue         = r$pvalue,
              padj           = r$padj,
              sample_type    = num,
-             reference      = den)
-}, BPPARAM = MulticoreParam(workers = parallel::detectCores() - 2))
+             reference      = "positive.control")
+})
+names(res_df) <- paste0(comparisons, "_vs_positive.control")
 
 all_res <- data.table::rbindlist(res_df) %>% as.data.frame()
-saveRDS(all_res, "all_res.rds")
+
+write_tsv(all_res, "results/rnaseq/all-ffs-vs-lps-stimulation-alpha05.tsv.gz")
+
+# save the RDS objects
+saveRDS(dds, "dds_fitted.rds")
+saveRDS(all_res, "all_res_vs_LPS.rds")
+
+# summary on the results
+# Use 10% FDR to filter the adjusted p-values, corrected with Benjamini-Hochberg method
+alpha <- 0.05
+
+res_summary <- all_res %>%
+  group_by(sample_type, reference) %>%
+  summarise(
+    n_tested  = sum(baseMean > 0),
+    up        = sum(padj < alpha & log2FoldChange > 0, na.rm = TRUE),
+    down      = sum(padj < alpha & log2FoldChange < 0, na.rm = TRUE),
+    outliers  = sum(baseMean > 0 & is.na(pvalue)),
+    low_count = sum(!is.na(pvalue) & is.na(padj)),
+    .groups = "drop"
+  ) %>%
+  mutate(total_DE = up + down) %>%
+  arrange(desc(total_DE))
+
+#################################################
+# Comparisons of foods vs LPS+ for fold-change
+# Specific food volcano plots vs LPS+
+#################################################
+
+# top DE genes for foods vs LPS+ condition
+top_de_genes <- all_res %>% 
+  filter(!is.na(padj), padj < 0.05) %>% 
+  dplyr::count(gene, sort = TRUE) %>% 
+  slice_head(n=50) %>% 
+  pull(gene)
+
+# build genes x comparisons matrix
+lfc_mat <- all_res %>% 
+  filter(gene %in% top_de_genes) %>% 
+  select(gene, sample_type, log2FoldChange) %>% 
+  tidyr::pivot_wider(names_from = sample_type, values_from = log2FoldChange) %>% 
+  tibble::column_to_rownames("gene") %>% 
+  as.matrix()
+
+# plot
+lim    <- max(abs(lfc_mat), na.rm = TRUE)
+lim    <- min(lim, 4)
+breaks <- seq(-lim, lim, length.out = 101)
+cols   <- colorRampPalette(c("blue", "white", "red"))(100)
+
+pheatmap(pmax(pmin(lfc_mat, lim), -lim),
+         color = cols, breaks = breaks,
+         fontsize_col = 6)
+
+
+#################################################
+# Function for comparing subset list of foods to drug controls
+#################################################
+
+compare_to_drugs <- function(dds, foods,
+                             drugs = c("Jak.Stat.inhibitor.ruxolitinib",
+                                       "NFKB.inhibitor.PDTC")) {
+  out <- list()
+  for (ref in drugs) {
+    dds_ref <- dds
+    dds_ref$sample_type <- relevel(dds_ref$sample_type, ref = ref)
+    dds_ref <- nbinomWaldTest(dds_ref)        # one-time step per drug
+    
+    for (f in foods) {
+      r <- results(dds_ref, contrast = c("sample_type", f, ref))
+      out[[paste0(f, "_vs_", ref)]] <- data.frame(
+        gene           = rownames(r),
+        baseMean       = r$baseMean,
+        log2FoldChange = r$log2FoldChange,
+        lfcSE          = r$lfcSE,
+        stat           = r$stat,
+        pvalue         = r$pvalue,
+        padj           = r$padj,
+        sample_type    = f,
+        reference      = ref)
+    }
+    rm(dds_ref); gc()
+  }
+  data.table::rbindlist(out) %>% as.data.frame()
+}
+
+

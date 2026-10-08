@@ -8,7 +8,7 @@ library(tidyverse)
 sample_map <- read_tsv("metadata/rnaseq/2026-09-25-rnaseq-sample-map.tsv", col_names = TRUE) %>% 
   set_names(c("sample_code", "batch", "sample_id", "lps_addition", "pre_treatment", "sample_type", "main_ingredient", "food_type", "replicate")) %>% 
   mutate(sample = paste0(sample_id, "_count")) %>% 
-  select(sample, batch, sample_type, replicate)
+  select(sample, batch, sample_code, sample_type, replicate)
 
 singleton_samples <- sample_map %>% 
   distinct() %>% 
@@ -18,6 +18,7 @@ singleton_samples <- sample_map %>%
   mutate(sample = gsub("_count", "", sample)) %>% 
   pull(sample)
 
+# drop additional samples - samples not from this experiment, the chemical control comparisons
 singleton_samples <- c(singleton_samples, "44R9PF_17", "44R9PF_18", "44R9PF_19", "44R9PF_20", "44R9PF_21")
 
 filtered_sample_map <- sample_map %>% 
