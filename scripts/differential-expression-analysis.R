@@ -254,6 +254,12 @@ all_res <- data.table::rbindlist(res_df) %>% as.data.frame()
 
 write_tsv(all_res, "results/rnaseq/all-ffs-vs-lps-stimulation-alpha05.tsv.gz")
 
+# filter to padj < 0.05 and write out the DEGs
+filtered_degs <- all_res %>% 
+  filter(padj < 0.05)
+
+write_tsv(filtered_degs, "results/rnaseq/filtered-05-degs.tsv.gz")
+
 # summary on the results
 alpha <- 0.05
 
@@ -269,6 +275,8 @@ res_summary <- all_res %>%
   ) %>%
   mutate(total_DE = up + down) %>%
   arrange(desc(total_DE))
+
+write_tsv(res_summary, "results/rnaseq/degs-food-summaries.tsv")
 
 #################################################
 # Comparisons of foods vs LPS+ for fold-change
