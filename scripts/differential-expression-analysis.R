@@ -254,10 +254,6 @@ all_res <- data.table::rbindlist(res_df) %>% as.data.frame()
 
 write_tsv(all_res, "results/rnaseq/all-ffs-vs-lps-stimulation-alpha05.tsv.gz")
 
-# save the RDS objects
-saveRDS(dds, "dds_fitted.rds")
-saveRDS(all_res, "all_res_vs_LPS.rds")
-
 # summary on the results
 alpha <- 0.05
 
@@ -359,4 +355,8 @@ compare_to_drugs <- function(dds, foods,
   data.table::rbindlist(out) %>% as.data.frame()
 }
 
-
+# save all objects
+saveRDS(dds, "dds_fitted.rds")
+saveRDS(all_res, "all_res_vs_LPS.rds")
+saveRDS(gene_info, "gene_info.rds")
+saveRDS(sample_codes, "sample_codes.rds")
