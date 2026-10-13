@@ -260,8 +260,6 @@ names(res_df) <- paste0(comparisons, "_vs_positive.control")
 
 all_res <- data.table::rbindlist(res_df) %>% as.data.frame()
 
-write_tsv(all_res, "results/rnaseq/all-ffs-vs-lps-stimulation-alpha05.tsv.gz")
-
 # filter to padj < 0.05 and write out the DEGs
 filtered_degs <- all_res %>% 
   filter(padj < 0.05)
@@ -296,6 +294,9 @@ all_res_df_info <- all_res %>%
   left_join(gene_info) %>% 
   left_join(sample_codes, by="sample_type") %>% 
   select(gene, gene_name, gene_biotype, sample_type, sample_code, reference, baseMean, log2FoldChange, lfcSE, stat, pvalue, padj)
+
+write_tsv(all_res_df_info, "results/rnaseq/all-ffs-vs-lps-stimulation-alpha05.tsv.gz")
+
 
 # filter for samples with some anti-inflamm activity from IFN bioassay
 base_filtered_codes <- c(bioactivity_ifn_filtered_codes, "POS", "PDTC", "ruxolitinib")

@@ -92,7 +92,7 @@ col_order  <- c(food_order, intersect(drugs, colnames(nes_mat)))
 nes_lim <- max(abs(nes_mat), na.rm = TRUE)
 
 # heatmap
-pheatmap(nes_mat[, col_order],
+pathway_heatmap <- pheatmap(nes_mat[, col_order],
          color           = colorRampPalette(c("blue", "white", "red"))(100),
          breaks          = seq(-nes_lim, nes_lim, length.out = 101),
          cluster_cols    = FALSE,
@@ -103,3 +103,5 @@ pheatmap(nes_mat[, col_order],
          fontsize_col    = 6,
          main            = "Hallmark GSEA: NES vs LPS+ (* padj < 0.05)")
 
+ggsave("figures/pathway_heatmap.png", pathway_heatmap, width=15, height=8, units=c("in"))
+ggsave("figures/pathway_heatmap.pdf", pathway_heatmap, width=15, height=8, units=c("in"))
