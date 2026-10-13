@@ -73,6 +73,14 @@ all(rownames(sample_metadata) == colnames(count_matrix))
 ###############################
 bioactivity_df <- read_excel("raw_data/bioactivity/Fermented_food_data_mastersheet.xlsx", sheet = "full_data")
 
+ifn_bioactivity_filtered_df <- bioactivity_df %>% 
+  dplyr::mutate(Sample_type = tolower(Sample_type)) %>% 
+  dplyr::rename(sample_code = Sample_number) %>% 
+  filter(normalized_viability > 70) %>% 
+  filter(normalized_IFN <=100)
+
+write_tsv(ifn_bioactivity_filtered_df, "results/bioactivity/filtered-ifn-bioactivity-df.tsv")
+
 # samples that show some anti-inflammatory activity by IFN
 bioactivity_ifn_filtered_codes <- bioactivity_df %>% 
   filter(Sample_type == "sample" | Sample_type == "Sample") %>% 
@@ -92,7 +100,7 @@ ruxolitinib_median_IFN <- bioactivity_df %>%
 
 # samples that show at or below IFN compared to the median ruxolitinib IFN activity
 bioactivity_ifn_filtered_ruxo_level_codes <- bioactivity_df %>% 
-  filter(Sample_type == "sample") %>% 
+  filter(Sample_type == "sample" | Sample_type == "Sample") %>% 
   dplyr::rename(sample_code = Sample_number) %>% 
   filter(normalized_viability > 70) %>% 
   group_by(sample_code) %>% 
@@ -178,12 +186,12 @@ plotPCA(vsd, intgroup = "batch")
 # pull metadata for certain clusters
 pca$far <- pca$PC1 > 30
 far_ids <- rownames(pca)[pca$far]
-sample_map %>% 
+qced_sample_map %>% 
   filter(sample %in% far_ids) # all negative controls cluster
 
 pca$far <- pca$PC2 > 10
 far_ids <- rownames(pca)[pca$far]
-sample_map %>% 
+qced_sample_map %>% 
   filter(sample %in% far_ids)
 
 # do replicates of some samples in the top cluster appear in the main cluster of samples
