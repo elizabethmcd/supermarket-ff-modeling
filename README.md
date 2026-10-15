@@ -1,0 +1,3 @@
+# Modeling Predictive Drivers of Anti-Inflammatory Effects of Fermented Foods
+
+This repository contains scripts, notebooks, figures, and results for modeling the predictive drivers of anti-inflammatory effects of fermented foods through combining IFN cell-based bioactivity assays treated with fermented food extracts, bulk RNA-seq of the cell extracts, and shotgun metagenomics and untargeted metabolomics of the food substrates. Fermented foods have been recently shown to lower biomarkers for inflammation, and we were interested in modeling the effects of microbial species and metabolites on IFN bioactivity levels from a survey of diverse fermented foods. 
