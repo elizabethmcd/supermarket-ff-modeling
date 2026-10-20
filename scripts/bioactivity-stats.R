@@ -67,7 +67,7 @@ ifn_bar_plot <- ifn_bioactivity_filtered_df %>%
     axis.text.x = element_text(angle = 85, hjust = 1))
   
 
-ggsave("figures/ifn-bioactivity-bar-plot-filtered-samples.png", width=13, height=9, units=c("in"))
+ggsave("figures/ifn-bioactivity-bar-plot-filtered-samples.png", width=15, height=9, units=c("in"))
 
 
 # samples that show some anti-inflammatory activity by IFN

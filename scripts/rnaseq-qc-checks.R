@@ -1,4 +1,5 @@
 library(tidyverse)
+library(ggrepel)
 
 #######################################
 # RNA-seq QC checks
@@ -125,6 +126,73 @@ pc_mapping_comps_plot <- ggplot(plot_df, aes(x=protein_coding, y=percent_mapped,
 ggsave("figures/mapping-stats-plot.png", mapping_plot, width=18, height=8, units=c("in"))
 ggsave("figures/protein-coding-gene-counts-plot.png", gene_counts_plot, width=18, height=8, units=c("in"))
 ggsave("figures/pc-mapping-comps-plot.png", pc_mapping_comps_plot, width=18, height=8, units=c("in"))
+
+#######################################
+# RNA-seq QC checks
+#######################################
+# check the M6PXYP run which had lower mapping % for a lot of samples, but the coverage across protein coding genes might look ok just some magnitude lower than the other samples
+# compare to a run where all samples look fine - 4M38F8
+counts <- read_tsv("raw_data/rnaseq/2026-09-25-combined-expression-matrix.tsv") %>% 
+  select(gene_id, gene_name, gene_biotype, ends_with("_cpm")) %>% 
+  pivot_longer(
+    cols=
+      !c(gene_id, gene_name, gene_biotype),
+    names_to = "sample",
+    values_to = "cpm"
+  ) %>% 
+  mutate(sample = gsub("_cpm", "", sample),
+         batch = str_sub(sample, 1, 6))
+
+# share of counts in each gene_biotype
+biotype_df <- counts %>% 
+  group_by(sample, batch, gene_biotype) %>% 
+  dplyr::summarise(frac = sum(cpm, na.rm = TRUE)/ 1e6, .groups = "drop")
+
+biotype_df %>% 
+  group_by(sample) %>% 
+  dplyr::summarise(total = sum(frac)) %>% 
+  print(n=57)
+
+# keep only biotypes above 0.5% mapping rate
+keep_types <- biotype_df %>% 
+  group_by(gene_biotype) %>% 
+  filter(max(frac) >= 0.005) %>% 
+  pull(gene_biotype) %>% 
+  unique()
+
+biotype_plot_df <- biotype_df %>% 
+  mutate(gene_biotype = if_else(gene_biotype %in% keep_types, gene_biotype, "other")) %>% 
+  group_by(sample, batch, gene_biotype) %>% 
+  dplyr::summarise(frac = sum(frac), .groups = "drop")
+
+# stacked bar plot for gene biotypes per sample
+biotype_bar_plot <- ggplot(biotype_plot_df, aes(x=sample, y=frac, fill=gene_biotype)) +
+  geom_col() +
+  facet_grid(~ batch, scales = "free_x", space = "free_x") + 
+  labs(x = NULL, y= "Fraction of CPM", fill = "Biotype") +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme_bw() + 
+  theme(axis.text.x = element_text(
+    angle = 90, vjust = 0.5, hjust=1
+  )) +
+  theme(legend.position = "bottom")
+
+# for each biotype, make a boxlot of fraction of counts going to that biotype - facet by biotype and colored by batch
+biotype_box_plot <- ggplot(biotype_plot_df, aes(x=batch, y=frac, color = batch)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(width = 0.5, size = 2) +
+  facet_wrap(~ gene_biotype, scales = "free_y") +
+  labs(x=NULL, y="Fraction of CPM") +
+  theme_bw() +
+  theme(legend.position = "none")
+
+# save figures
+ggsave("figures/gene-biotype-mapping-counts-frac-bar-plot.png", biotype_bar_plot, width=16, height=8, units=c("in"))
+ggsave("figures/gene-biotype-mapping-counts-frac-box-plot.png", biotype_box_plot, width=14, height=8, units=c("in"))
+
+#######################################
+# Filter out samples based on criteria for mapping %, protein coding gene count, keeping some lower mapping % samples if coverage looked good across protein-coding genes
+#######################################
 
 # calculate median mapping rate and protein coding gene count
 median_mapping_rate <- combined_qc_stats_df %>% 
