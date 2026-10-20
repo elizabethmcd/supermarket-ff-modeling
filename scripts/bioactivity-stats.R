@@ -1,4 +1,5 @@
 library(tidyverse)
+library(Hmisc)
 
 ###############################
 # Select samples with IFN bioactivity at certain cutoffs
@@ -70,32 +71,121 @@ ifn_bar_plot <- ifn_bioactivity_filtered_df %>%
 ggsave("figures/ifn-bioactivity-bar-plot-filtered-samples.png", width=15, height=9, units=c("in"))
 
 
-# samples that show some anti-inflammatory activity by IFN
-bioactivity_ifn_filtered_codes <- ifn_bioactivity_filtered_df %>% 
-  select(sample_code) %>% 
-  unique() %>% 
-  pull(sample_code)
-
-# median ruxolitinib IFN activity
-ruxolitinib_median_IFN <- ifn_bioactivity_filtered_df %>% 
-  filter(sample_code == "inhibitor2") %>% 
-  summarise(median(normalized_IFN)) %>% 
-  pull(`median(normalized_IFN)`)
-
-# samples that show at or below IFN compared to the median ruxolitinib IFN activity
-bioactivity_ifn_filtered_ruxo_level_codes <- ifn_bioactivity_filtered_df %>% 
-  group_by(sample_code) %>% 
-  summarise(median = median(normalized_IFN)) %>% 
-  filter(median <= ruxolitinib_median_IFN) %>% 
-  pull(sample_code)
-
 ###############################
 # Welch T-test for significance to select samples significant different in IFN from LPS+
 # BH correction for multiple testing
 ###############################
-
-bioactivity_stats <- bioactivity_df %>% 
-  dplyr::mutate(sample_type = tolower(Sample_type)) %>% 
-  dplyr::rename(sample_code = Sample_number) %>% 
+# basic stats for the filtered samples for quick checks
+bioactivity_stats <- ifn_bioactivity_filtered_df %>% 
+  filter(sample_code %in% filtered_samples) %>% 
   dplyr::group_by(sample_code) %>% 
   summarise(mean_IFN = mean(normalized_IFN), sd_IFN = sd(normalized_IFN), median_IFN = median(normalized_IFN), minimum_IFN = min(normalized_IFN), maximum_IFN = max(normalized_IFN), n = dplyr::n(), .groups = "drop")
+
+# set of filtered samples and controls
+filtered_samples_and_controls <- c(filtered_samples, "positive_control", "inhibitor2")
+
+# filtered df to select set of samples and controls
+ifn_normalized_filtered_df <- bioactivity_df %>% 
+  dplyr::mutate(sample_type = tolower(Sample_type)) %>% 
+  dplyr::rename(sample_code = Sample_number) %>% 
+  filter(normalized_viability > 70) %>% 
+  select(sample_code, sample_type, normalized_IFN) %>% 
+  filter(sample_code %in% filtered_samples_and_controls)
+
+# LPS+ values
+lps_pos_values <- ifn_normalized_filtered_df %>% 
+  filter(sample_type == "positive_control") %>% 
+  pull(normalized_IFN)
+
+# perform a Welch's 2-sided t-test of each food vs the LPS+ positive control, then perform BH correction
+welch_results <- ifn_normalized_filtered_df %>% 
+  filter(sample_type != "positive_control") %>% 
+  group_by(sample_code, sample_type) %>% 
+  summarise(
+    n = dplyr::n(),
+    mean_IFN = mean(normalized_IFN),
+    sd_IFN = sd(normalized_IFN),
+    test = list(t.test(normalized_IFN, lps_pos_values)),
+    .groups = "drop"
+  ) %>% 
+  mutate(
+    difference_from_LPS = mean_IFN - mean(lps_pos_values),
+    CI_low = sapply(test, function(t) t$conf.int[1]),
+    CI_high = sapply(test, function(t) t$conf.int[2]),
+    t_stat = sapply(test, function(t) unname(t$statistic)),
+    df = sapply(test, function(t) unname(t$parameter)),
+    p_value = sapply(test, function(t) t$p.value),
+    p_adj = p.adjust(p_value, method = "BH"),
+    significant = p_adj < 0.05
+  ) %>% 
+  select(-test) %>% 
+  arrange(p_adj)
+ 
+# plot bar plot of mean normalized IFN with error bars, sorting the bars by highest to lowest mean IFN, and put * on the plot if they are significantly different from the LPS+ condition 
+plot_df <- ifn_normalized_filtered_df %>% 
+  filter(sample_code %in% filtered_samples) %>% 
+  select(sample_code, normalized_IFN) %>% 
+  left_join(filtered_metadata_sheet_by_bioactivity_runs, by="sample_code")
+
+sample_order <- plot_df %>% 
+  group_by(sample_code) %>% 
+  summarise(mean_IFN = mean(normalized_IFN), .groups = "drop") %>% 
+  arrange(desc(mean_IFN)) %>% 
+  pull(sample_code)
+
+plot_df <- plot_df %>% 
+  mutate(sample_code = factor(sample_code,
+                              levels = sample_order))
+
+signf_df <- welch_results %>% 
+  filter(sample_code %in% sample_order) %>% 
+  mutate(
+    stars = case_when(
+      p_adj < 0.001 ~ "***",
+      p_adj < 0.01  ~ "**",
+      p_adj < 0.05  ~ "*",
+      TRUE          ~ ""
+    ),
+    sample_code = factor(sample_code, levels = sample_order)
+  ) %>% 
+  left_join(
+    plot_df %>% group_by(sample_code) %>% 
+      summarise(y_pos = max(normalized_IFN) + 6, .groups = "drop"),
+    by = "sample_code"
+  )
+
+ifn_mean_signf_bar_plot <- ggplot(plot_df, aes(x=sample_code, y=normalized_IFN,
+       fill=substrate_category, color = substrate_category)) +
+  stat_summary(fun=mean, geom="col", alpha=0.5, width=0.7, linewidth=0.8) +
+  stat_summary(fun.data = mean_sdl, fun.args = list(mult=1),
+               geom="errorbar", width=0.25, linewidth=0.6) +
+  geom_jitter(width=0.15, size=1.5, alpha=0.8) +
+  geom_hline(yintercept=100, linetype="dashed", color="grey40") +
+  geom_text(data = signf_df, aes(x=sample_code, y=y_pos, label=stars),
+            inherit.aes = FALSE, size=5, vjust=0) +
+  labs(x="Sample", y="Normalized IFN (% of LPS+)",
+       fill="Substrate", color="Substrate",
+       caption = "Mean ± SD. Welch's t-test vs LPS+, BH-adjusted: * q < 0.05, ** q < 0.01, *** q < 0.001") +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.08))) +
+  guides(
+    fill = guide_legend(ncol = 5, title.position = "top"),
+    color = guide_legend(ncol = 5, title.position = "top")
+  ) +
+  theme_minimal() +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.y = element_line(color = "#E5E5E5", linewidth = 0.5),
+    axis.text.x = element_text(angle = 85, hjust = 1, size=12),
+    axis.text.y = element_text(size = 12),
+    axis.title.x = element_text(face="bold", size=14),
+    axis.title.y = element_text(face= "bold", size=14),
+    legend.position = "inside",
+    legend.position.inside = c(0.98, 0.95),
+    legend.justification = c(1,1),
+    legend.background = element_rect(fill="white", color="grey80"),
+    legend.title = element_text(face="bold", size=14),
+    legend.text = element_text(size=12)
+  )
+
+ggsave("figures/ifn-mean-signf-bar-plot.png", ifn_mean_signf_bar_plot, width=22, height=10, units=c("in"))
