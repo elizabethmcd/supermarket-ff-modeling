@@ -191,22 +191,16 @@ ggsave("figures/gene-biotype-mapping-counts-frac-bar-plot.png", biotype_bar_plot
 ggsave("figures/gene-biotype-mapping-counts-frac-box-plot.png", biotype_box_plot, width=14, height=8, units=c("in"))
 
 #######################################
-# Filter out samples based on criteria for mapping %, protein coding gene count, keeping some lower mapping % samples if coverage looked good across protein-coding genes
+# Filter out samples with low protein-coding counts, below 10,000, remove the PDTC samples, and remove the positive control acids because we don't have bioactivity data for them
 #######################################
 
-# calculate median mapping rate and protein coding gene count
-median_mapping_rate <- combined_qc_stats_df %>% 
-  summarise(median(percent_mapped))
-
-median_protein_coding_count <- combined_qc_stats_df %>% 
-  summarise(median(protein_coding))
-
-# remove samples with below 97% mapping rate, and then remove samples that are then singletons
+# remove samples with less than 10,000 protein coding gene count, remove PDTC samples, remove acids, and remove singletons if remaining
 qced_sample_map <- combined_qc_stats_df %>% 
-  filter(percent_mapped > 97) %>% 
+  filter(protein_coding > 10000) %>% 
+  filter(!sample_type %in% c("NFKB inhibitor PDTC", "0.0125% acetic acid", "0.025% lactic acid", "4-Hydroxyphenyllactic acid", "Indole-3-lactic acid", "Phenyllactic acid", "amazake")) %>% 
   distinct() %>% 
   group_by(sample_type) %>% 
   filter(n() > 1) %>% 
   ungroup()
 
-write_tsv(qced_sample_map, "metadata/rnaseq/2026-10-06-qced-sample-map.tsv")  
+write_tsv(qced_sample_map, "metadata/rnaseq/2026-10-26-qced-sample-map.tsv")  

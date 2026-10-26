@@ -17,7 +17,7 @@ library(genefilter)
 ###############################
 
 # qced sample map 
-qced_sample_map <- read_tsv("metadata/rnaseq/2026-10-06-qced-sample-map.tsv") %>% 
+qced_sample_map <- read_tsv("metadata/rnaseq/2026-10-26-qced-sample-map.tsv") %>% 
   mutate(sample = paste0(sample, "_count")) %>% 
   select(sample, batch, sample_code, sample_type)
 
@@ -169,8 +169,26 @@ table(cd$sample_type[cd$sample_type %in% far_types], cd$far[cd$sample_type %in% 
 pca <- plotPCA(vsd, intgroup = c("batch", "sample_type"), returnData = TRUE)
 main <- pca[pca$PC1 < 30, ]
 main$sample_type <- colData(vsd)[rownames(main), "sample_type"]
-summary(aov(PC2 ~ sample_type, data = main))  # 93% of variance explained by sample type
-summary(aov(PC2 ~ batch, data = main)) # 24% of variance explained by batch -> could be due to what foods ended up in which batch
+summary(aov(PC2 ~ sample_type, data = main)) # sum sqs added, mean sample_type sum sq over = 92% explained by sample type
+summary(aov(PC2 ~ batch, data = main)) # 22% of variance explained by batch -> could be due to what foods ended up in which batch
+
+# correct with omega-squared, many df because many different sample types so by chance they could be variable
+omega_sq <- function(fit) {
+  t <- summary(fit)[[1]]
+  ms_res <- t[["Mean Sq"]][2]
+  (t[["Sum Sq"]][1] - t[["Df"]][1] * ms_res) / (sum(t[["Sum Sq"]]) + ms_res)
+}
+
+fit_type  <- aov(PC2 ~ sample_type, data = main)
+fit_batch <- aov(PC2 ~ batch,       data = main)
+
+omega_sq(fit_type) 
+omega_sq(fit_batch) 
+
+# check how samples are distributed among batches 
+tab <- table(main$sample_type, main$batch)
+tab
+sum(rowSums(tab > 0) == 1)
 
 # median within-sample type spread vs overall spread
 within_sd <- tapply(main$PC2, main$sample_type, sd)

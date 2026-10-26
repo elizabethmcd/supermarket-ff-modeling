@@ -89,7 +89,7 @@ ifn_normalized_filtered_df <- bioactivity_df %>%
   dplyr::mutate(sample_type = tolower(Sample_type)) %>% 
   dplyr::rename(sample_code = Sample_number) %>% 
   filter(normalized_viability > 70) %>% 
-  select(sample_code, sample_type, normalized_IFN) %>% 
+  select(sample_code, sample_type, normalized_IFN, normalized_viability) %>% 
   filter(sample_code %in% filtered_samples_and_controls)
 
 # LPS+ values
@@ -131,11 +131,13 @@ sample_order <- plot_df %>%
   group_by(sample_code) %>% 
   summarise(mean_IFN = mean(normalized_IFN), .groups = "drop") %>% 
   arrange(desc(mean_IFN)) %>% 
+  filter(sample_code != "FF0262") %>% 
   pull(sample_code)
 
 plot_df <- plot_df %>% 
   mutate(sample_code = factor(sample_code,
-                              levels = sample_order))
+                              levels = sample_order)) %>% 
+  filter(sample_code != "FF0262")
 
 signf_df <- welch_results %>% 
   filter(sample_code %in% sample_order) %>% 
@@ -189,3 +191,12 @@ ifn_mean_signf_bar_plot <- ggplot(plot_df, aes(x=sample_code, y=normalized_IFN,
   )
 
 ggsave("figures/ifn-mean-signf-bar-plot.png", ifn_mean_signf_bar_plot, width=22, height=10, units=c("in"))
+
+# of the filtered samples is IFN bioactivity correlated with viability or not
+ifn_viability_plot <- ifn_normalized_filtered_df %>% 
+  left_join(filtered_metadata_sheet_by_bioactivity_runs, by="sample_code") %>% 
+  ggplot(aes(x=normalized_IFN, y=normalized_viability, color=substrate_category)) +
+  geom_point() +
+  theme_minimal()
+
+ggsave("figures/ifn-viability-comp-plot.png", ifn_viability_plot, width=10, height=8, units=c("in"))
