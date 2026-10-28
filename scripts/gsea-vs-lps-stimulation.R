@@ -58,7 +58,7 @@ saveRDS(gsea_all, "gsea_hallmark_vs_LPS.rds")
 
 # make heatmap of NES comparing pathways to fermented foods
 # first filter down to the fermented food samples that have some lowered IFN bioactivity that fits the filtered viability > 70%
-drugs <- c("Jak.Stat.inhibitor.ruxolitinib", "NFKB.inhibitor.PDTC")
+drugs <- c("Jak.Stat.inhibitor.ruxolitinib")
 
 filtered_ifn_samples <- sample_codes %>%
   dplyr::filter(sample_code %in% bioactivity_ifn_filtered_codes) %>%
@@ -102,6 +102,8 @@ pathway_heatmap <- pheatmap(nes_mat[, col_order],
          fontsize_row    = 6,
          fontsize_col    = 6,
          main            = "Hallmark GSEA: NES vs LPS+ (* padj < 0.05)")
+
+pathway_heatmap
 
 ggsave("figures/pathway_heatmap.png", pathway_heatmap, width=15, height=8, units=c("in"))
 ggsave("figures/pathway_heatmap.pdf", pathway_heatmap, width=15, height=8, units=c("in"))

@@ -3,6 +3,7 @@ library(readr)
 library(readxl)
 library(DESeq2)
 library(apeglm)
+library(limma)
 library(ggrepel)
 library(BiocParallel)
 library(pheatmap)
@@ -277,7 +278,7 @@ write_tsv(all_res_df_info, "results/rnaseq/all-ffs-vs-lps-stimulation-alpha05.ts
 
 
 # filter for samples with some anti-inflamm activity from IFN bioassay
-base_filtered_codes <- c(bioactivity_ifn_filtered_codes, "POS", "PDTC", "ruxolitinib")
+base_filtered_codes <- c(bioactivity_ifn_filtered_codes, "POS", "ruxolitinib")
 
 base_anti_inflm_foods_df <- all_res_df_info %>% 
   filter(sample_code %in% base_filtered_codes)
@@ -325,32 +326,25 @@ pheatmap(pmax(pmin(lfc_mat, lim), -lim),
 
 compare_to_drugs <- function(dds, foods,
                              drugs = c("Jak.Stat.inhibitor.ruxolitinib",
-                                       "NFKB.inhibitor.PDTC")) {
+                                       "NFKB.inhibitor.PDTC"),
+                             alpha = 0.05) {
   out <- list()
   for (ref in drugs) {
-    dds_ref <- dds
-    dds_ref$sample_type <- relevel(dds_ref$sample_type, ref = ref)
-    dds_ref <- nbinomWaldTest(dds_ref)        # one-time step per drug
-    
     for (f in foods) {
-      r <- results(dds_ref, contrast = c("sample_type", f, ref))
+      r <- results(dds, contrast = c("sample_type", f, ref), alpha = alpha)
       out[[paste0(f, "_vs_", ref)]] <- data.frame(
-        gene           = rownames(r),
-        baseMean       = r$baseMean,
-        log2FoldChange = r$log2FoldChange,
-        lfcSE          = r$lfcSE,
-        stat           = r$stat,
-        pvalue         = r$pvalue,
-        padj           = r$padj,
-        sample_type    = f,
-        reference      = ref)
+        gene = rownames(r), baseMean = r$baseMean,
+        log2FoldChange = r$log2FoldChange, lfcSE = r$lfcSE,
+        stat = r$stat, pvalue = r$pvalue, padj = r$padj,
+        sample_type = f, reference = ref)
     }
-    rm(dds_ref); gc()
   }
   data.table::rbindlist(out) %>% as.data.frame()
 }
 
+#################################################
 # save all objects
+#################################################
 saveRDS(dds, "dds_fitted.rds")
 saveRDS(all_res, "all_res_vs_LPS.rds")
 saveRDS(gene_info, "gene_info.rds")
