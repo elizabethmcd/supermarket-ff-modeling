@@ -200,3 +200,7 @@ ifn_viability_plot <- ifn_normalized_filtered_df %>%
   theme_minimal()
 
 ggsave("figures/ifn-viability-comp-plot.png", ifn_viability_plot, width=10, height=8, units=c("in"))
+
+###############################
+# T-test to test for samples with significantly lower mean IFN to the drug ruxolitinib
+###############################
