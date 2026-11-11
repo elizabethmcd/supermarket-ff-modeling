@@ -1,7 +1,9 @@
+
 *.rds
 results/rnaseq/*.gz
 .RData
 .Rhistory
+.RDataTmp
 *.DS_Store*
 *.Rproj
 raw_data/rnaseq/*.tsv

@@ -8,9 +8,9 @@ library(pheatmap)
 ###############################
 
 # read in saved RDS objects
-all_res      <- readRDS("all_res_vs_LPS.rds")
-gene_info    <- readRDS("gene_info.rds")
-sample_codes <- readRDS("sample_codes.rds")
+all_res      <- readRDS("results/rnaseq/all_res_vs_LPS.rds")
+gene_info    <- readRDS("results/rnaseq/gene_info.rds")
+sample_codes <- readRDS("results/rnaseq/sample_codes.rds")
 
 ###############################
 # Pathway analysis: fgsea on MSigDB Hallmark gene sets
@@ -53,8 +53,9 @@ gsea_all <- gsea_all %>%
   left_join(sample_codes, by = "sample_type") %>%
   dplyr::select(sample_type, sample_code, pathway, NES, pval, padj, size, leadingEdge)
 
+# save RDS object and TSV
 write_tsv(gsea_all, "results/rnaseq/fgsea-hallmark-ffs-vs-lps.tsv")
-saveRDS(gsea_all, "gsea_hallmark_vs_LPS.rds")
+saveRDS(gsea_all, "results/rnaseq/gsea_hallmark_vs_LPS.rds")
 
 # make heatmap of NES comparing pathways to fermented foods
 # first filter down to the fermented food samples that have some lowered IFN bioactivity that fits the filtered viability > 70%
