@@ -14,6 +14,8 @@ metadata_sheet <- read_tsv("metadata/Combined master sheet updated 042126-8ed4f7
   select(-producer_2, dominant_fermentation_chemistry_2) %>% 
   dplyr::rename(producer = producer_1, dominant_fermentation_chemistry = dominant_fermentation_chemistry_1)
 
+write_tsv(metadata_sheet, "metadata/cleaned-combined-metadata-sheet.tsv")
+
 # filter sample codes to those meeting these conditions:
 # metabolomics - yes
 # metagenomics - yes
