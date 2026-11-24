@@ -16,6 +16,15 @@ metadata_sheet <- read_tsv("metadata/Combined master sheet updated 042126-8ed4f7
 
 write_tsv(metadata_sheet, "metadata/cleaned-combined-metadata-sheet.tsv")
 
+# filter bioactivity results to viability > 70%, sample codes that have more than 2 replicates, and those with metadata information in the metadata sheet
+ifn_bioactivity_filtered_df <- bioactivity_df %>% 
+  dplyr::mutate(Sample_type = tolower(Sample_type)) %>% 
+  dplyr::rename(sample_code = Sample_number) %>% 
+  filter(normalized_viability > 70) %>% 
+  filter(sample_code %in% filtered_samples)
+
+write_tsv(ifn_bioactivity_filtered_df, "results/bioactivity/filtered-ifn-bioactivity-df.tsv")
+
 # filter sample codes to those meeting these conditions:
 # metabolomics - yes
 # metagenomics - yes
@@ -44,14 +53,6 @@ filtered_samples <- ifn_bioactivity_filtered_df %>%
   filter(n > 2) %>% 
   pull(sample_code)
 
-# filter bioactivity results to viability > 70%, sample codes that have more than 2 replicates, and those with metadata information in the metadata sheet
-ifn_bioactivity_filtered_df <- bioactivity_df %>% 
-  dplyr::mutate(Sample_type = tolower(Sample_type)) %>% 
-  dplyr::rename(sample_code = Sample_number) %>% 
-  filter(normalized_viability > 70) %>% 
-  filter(sample_code %in% filtered_samples)
-
-write_tsv(ifn_bioactivity_filtered_df, "results/bioactivity/filtered-ifn-bioactivity-df.tsv")
 
 # plot bar graph of IFN bioactivity, selecting samples with more than 2 "replicates", color by substrate category
 ifn_bar_plot <- ifn_bioactivity_filtered_df %>% 
