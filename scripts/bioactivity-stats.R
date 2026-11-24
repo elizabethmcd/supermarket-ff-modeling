@@ -291,12 +291,13 @@ wilcox_ifn_median_signf_bar_plot <- ggplot(wilcox_plot_df, aes(x=sample_code, y=
     legend.justification = c(1,1),
     legend.background = element_rect(fill="white", color="grey80"),
     legend.title = element_text(face="bold", size=14),
-    legend.text = element_text(size=12)
+    legend.text = element_text(size=12),
+    plot.caption = element_text(size=12)
   )
 
 wilcox_ifn_median_signf_bar_plot
 
-ggsave("figures/ifn-wilox-median-signf-bar-plot.png", welch_ifn_mean_signf_bar_plot, width=22, height=10, units=c("in"))
+ggsave("figures/ifn-wilox-median-signf-bar-plot.png", wilcox_ifn_median_signf_bar_plot, width=22, height=10, units=c("in"))
 
 # of the filtered samples is IFN bioactivity correlated with viability or not
 ifn_viability_plot <- ifn_normalized_filtered_df %>% 

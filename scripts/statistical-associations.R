@@ -1,8 +1,9 @@
 library(maaslin3)
+library(vegan)
 library(tidyverse)
 
 ###############################
-# Use MaAsLin3 to test associations of microbial species prevalence/abundance from metagenomics data with IFN bioactivity levels
+# Test associations of microbes/metabolites with metadata and IFN bioactivity
 ###############################
 
 # prep input data to input_data and input_metadata in format required by Maaslin3

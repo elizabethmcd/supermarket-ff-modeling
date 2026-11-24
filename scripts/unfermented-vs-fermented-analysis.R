@@ -12,7 +12,7 @@ library(msigdbr)
 #################################################
 
 # metadata for unfermented vs fermented pairs
-pairs <- read_tsv("metadata/rnaseq/unfermented-vs-fermented-pairs.tsv")
+pairs_metadata <- read_tsv("metadata/rnaseq/2026-11-23-updated-unfermented-vs-fermented-pairs-sheet.tsv", col_names = c("fermented_sample_code", "fermented_sample_name", "unfermented_sample_code", "raw", "pair"), skip = 1)
 
 # RDS objects
 dds <- readRDS("results/rnaseq/dds_fitted.rds")
@@ -20,11 +20,23 @@ gene_info <- readRDS("results/rnaseq/gene_info.rds") %>%
   dplyr::rename(gene_id = gene)
 sample_codes <- readRDS("results/rnaseq/sample_codes.rds")
 
-# specify unferm vs ferm contrasts from the DESeq object
-levs <- levels(dds$sample_type)
+# join pair metadata sheet with sample codes to get correct sample_type formatting
+sample_code_df <- as.data.frame(sample_codes)
 
-pairs <- pairs %>% 
-  mutate(contrast_id = paste0(pair, "_", fermented, "_vs_", raw))
+pairs_sample_types_df <- left_join(pairs_metadata, sample_code_df, by=join_by("fermented_sample_code" == "sample_code")) %>% 
+  filter(!is.na(sample_type)) %>% 
+  dplyr::rename(fermented = sample_type) %>% 
+  select(-fermented_sample_code, -fermented_sample_name) %>% 
+  left_join(sample_code_df, by=join_by("unfermented_sample_code" == "sample_code")) %>% 
+  select(-unfermented_sample_code, -raw) %>% 
+  dplyr::rename(raw = sample_type) %>% 
+  select(fermented, raw, pair)
+
+# specify unferm vs ferm contrasts from the DESeq object
+pairs <- pairs_sample_types_df %>% 
+  mutate(across(c(fermented, raw), as.character),
+         contrast_id = paste0(pair, "_", fermented, "_vs_", raw))
+
 
 ferm_res <- pmap(pairs, function(fermented, raw, pair, contrast_id, ...){
   res <- results(dds,
@@ -98,8 +110,10 @@ ferm_res_annot_sig <- ferm_res_df %>%
 tnf <- gene_info$gene_id[gene_info$gene_id == "ENSG00000232810"]
 keep <- unique(c(pairs$fermented, pairs$raw, "positive.control"))
 
-plotCounts(dds, gene = tnf, intgroup = "sample_type", returnData = TRUE) %>%
+tnf_counts_plot <- plotCounts(dds, gene = tnf, intgroup = "sample_type", returnData = TRUE) %>%
   filter(sample_type %in% keep) %>%
   ggplot(aes(reorder(sample_type, count, median), count)) +
   geom_point() + scale_y_log10() + coord_flip() +
   labs(x = NULL, y = "Normalized TNF counts")
+
+ggsave("figures/tnf-counts-plot-unferm-vs-ferm.png", tnf_counts_plot, width=8, height=10, units=c("in"))
